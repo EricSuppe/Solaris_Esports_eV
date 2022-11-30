@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { CircularProgress } from '@mui/material';
+import "./styles/style.css"
+import "./styles/variables.css"
+import getScrollbarWidth from './scripts/init/getScrollbarWidth';
+import getPreferedLanguage from './scripts/init/getPreferedLanguage';
+import getPreferedTheme from './scripts/init/getPreferedTheme';
+const Home = lazy(() => import('./pages/home/Home'));
 
 function App() {
+
+  /* initalizes the apps important configs */
+  useEffect(() => {
+    getScrollbarWidth();
+    getPreferedLanguage();
+    getPreferedTheme();
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className='CRA__config--root' data-script-target={`init`}>
+        <Suspense fallback={<CircularProgress/>}>
+          <Router>
+            <Routes>
+              <Route exact path="/" element={<Suspense fallback={<CircularProgress/>}><Home/></Suspense>}/>
+            </Routes>
+          </Router>
+        </Suspense>
+      </div>
+    </React.Fragment>
   );
 }
 

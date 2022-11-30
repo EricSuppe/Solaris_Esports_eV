@@ -1,0 +1,15 @@
+html {
+    /* initial scrollbar width => overriten by calculation ran at app render */
+    --scrollbarWidth: 0px;
+    /* actual width of the visibile window */
+    --windowWidth: calc(100vw - var(--scrollbarWidth));
+}
+
+/* color flavor */
+.flavor--Primary {
+    --accentColor: #ff5c00;
+}
+
+.theme--Dark {
+    --text-color: #ffffff;
+}

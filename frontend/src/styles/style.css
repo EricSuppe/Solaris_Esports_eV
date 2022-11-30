@@ -1,0 +1,14 @@
+html {
+    scroll-behavior:smooth
+}
+
+.CRA__config--root *, 
+.CRA__config--root::after, 
+.CRA__config--root::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
