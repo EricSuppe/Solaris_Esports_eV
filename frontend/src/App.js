@@ -1,13 +1,40 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { CircularProgress } from '@mui/material';
 import "./styles/style.css"
 import "./styles/variables.css"
+import Navbar from './components/common/Navbar';
+import Footer from './components/common/Footer';
 const Home = lazy(() => import('./pages/home/Home'));
 
-function App() {
+const Layout = () => {
+  return (
+    <div className='CRA__config--root'>
+      <Navbar/>
+      <Outlet/>
+      <Footer/>
+    </div>
+  )
+}
 
-  /* initalizes the apps important configs */
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <Suspense fallback={<CircularProgress />}>
+            <Home />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+]);
+
+function App() {
   useEffect(() => {
     getScrollbarWidth();
     getPreferedTheme();
@@ -16,15 +43,9 @@ function App() {
 
   return (
     <React.Fragment>
-      <div className='CRA__config--root'>
-        <Suspense fallback={<CircularProgress/>}>
-          <Router>
-            <Routes>
-              <Route exact path="/" element={<Suspense fallback={<CircularProgress/>}><Home/></Suspense>}/>
-            </Routes>
-          </Router>
-        </Suspense>
-      </div>
+      <Suspense fallback={<CircularProgress/>}>
+        <RouterProvider router={router}/>
+      </Suspense>
     </React.Fragment>
   );
 }
@@ -32,20 +53,17 @@ function App() {
 export default App;
 
 function getScrollbarWidth() {
-  //creating invisible container
   const outer = document.createElement('div');
   outer.style.visibility = 'hidden';
   outer.style.overflow = 'scroll';
   outer.style.msOverflowStyle = 'scrollbar';
   document.body.appendChild(outer);
-  //creating inner element and placing it in the container
+  
   const inner = document.createElement('div');
   outer.appendChild(inner);
-  //calculating difference between container's full width and the child width
+  
   const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
-  //removing temporary elements from the DOM
   outer.parentNode.removeChild(outer);
-  //save width
   document.querySelector("html").style = `--scrollbarWidth: ${scrollbarWidth}px`
 }
 

@@ -10,7 +10,7 @@ export default function SectionTemplate(props) {
                 <div className="Section__masked">
                     <div className="Section__backgroundMask">
                         <div className="Section__background">
-                            {props.hasGuides ? <Guides/> : null}
+                            {props?.hasGuides && <Guides/>}
                         </div>
                     </div>
                     <div className="Section__contentMask">

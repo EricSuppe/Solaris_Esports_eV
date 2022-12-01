@@ -6,7 +6,7 @@
     --sectionPaddingLargeMax: 128;
     --sectionPaddingMax: var(--sectionPaddingNormalMax);
     --sectionPaddingTopMax: var(--sectionPaddingMax);
-    --sectionBottomTopMax: var(--sectionPaddingMax);
+    --sectionPaddingBottomMax: var(--sectionPaddingMax);
     
     --sectionPaddingTop: calc(var(--sectionPaddingMin)*1px);
     --sectionPaddingBottom: calc(var(--sectionPaddingMin)*1px);
@@ -17,7 +17,7 @@
 @media (min-width: 1112px) {
     .Section {
         --sectionPaddingTop: calc(var(--sectionPaddingTopMax)*1px);
-        --sectionBottomTop: calc(var(--sectionPaddingBottomMax)*1px);
+        --sectionPaddingBottom: calc(var(--sectionPaddingBottomMax)*1px);
     }
 }
 .Section.Section--paddingSmall {
