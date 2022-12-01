@@ -1,15 +1,42 @@
 html {
+    /* min of space between windowborder and content */
+    --gutterWidth: 16px;
     /* initial scrollbar width => overriten by calculation ran at app render */
     --scrollbarWidth: 0px;
     /* actual width of the visibile window */
     --windowWidth: calc(100vw - var(--scrollbarWidth));
+    /* width of the content layout */
+    --layoutWidth: calc(var(--windowWidth) - var(--gutterWidth)*2);
+    --layoutWidthMax: 1250px;
+    /* padding values */
+    --paddingLayoutMin: var(--gutterWidth);
+    --paddingLayoutSmall: ;
+    --paddingLayoutMedium: ;
+    --paddingLayoutLarge: ;
+    --paddingLayoutMax: ;
+    --paddingLayoutNormal: var(--paddingLayoutMin);
+    /* gird */
+    --gridColumnCount: 2;
 }
-
+@media (min-width: 900px) {
+    html {
+        --gridColumnCount: 3;
+    }
+}
+@media (min-width: 1250px) {
+    html {
+        --layoutWidth: var(--layoutWidthMax);
+    }
+}
+:root {
+    --guideDashedSize: 1px 8px;
+}
 /* color flavor */
 .flavor--Primary {
     --accentColor: #ff5c00;
 }
-
 .theme--Dark {
     --text-color: #ffffff;
+    --guideSolidColor: rgba(97, 97, 97, 0.137);
+    --guideDashedColor: rgba(97, 97, 97, 0.255);
 }

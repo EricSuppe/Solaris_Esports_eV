@@ -1,0 +1,36 @@
+.Background__guides {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    padding: 0 var(--gutterWidth);
+    pointer-events: none;
+}
+.Background__guidesContainer {
+    position: relative;
+    display: grid;
+    grid: 1fr/repeat(var(--gridColumnCount),1fr);
+    max-width: var(--layoutWidth);
+    height: 100%;
+    margin: 0 auto;
+}
+.Background__guide {
+    width: 1px;
+    background: linear-gradient(180deg, var(--guideDashedColor), var(--guideDashedColor) 50%, transparent 0, transparent);
+    background-size: var(--guideDashedSize);
+}
+.Background__guide:first-of-type,
+.Background__guide:last-of-type {
+    background: var(--guideSolidColor);
+}
+@media (max-width: 899px) {
+    .Background__guide:nth-of-type(2) {
+        display: none;
+    }
+}
+.Background__guide:last-of-type {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
