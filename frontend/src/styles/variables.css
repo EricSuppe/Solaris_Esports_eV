@@ -15,8 +15,16 @@ html {
     --paddingLayoutLarge: ;
     --paddingLayoutMax: ;
     --paddingLayoutNormal: var(--paddingLayoutMin);
+
+    --paddingContentNone: 0;
+    --paddingContentSmall: 8px;
+    --paddingContentMedium: 16px;
+    --paddingContentLarge: 24px;
+    --paddingContentNormal: var(--paddingContentMedium);
     /* gird */
     --gridColumnCount: 2;
+
+    --columnWidth: calc(var(--layoutWidth)/var(--gridColumnCount))
 }
 @media (min-width: 900px) {
     html {
@@ -39,4 +47,15 @@ html {
     --text-color: #ffffff;
     --guideSolidColor: rgba(97, 97, 97, 0.137);
     --guideDashedColor: rgba(97, 97, 97, 0.255);
+    --backgroundColor: #121212;
+    --navColor: #343434;
+    --navHoverColor: #fff;
+    --navHoverOpacity: .6;
+    --cardBackground: #fff;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+} 
+a {
+    text-decoration: none;
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import propTypes from "prop-types"
-import "./pageTemplate.css"
+import "./contentTemplate.css"
 
-export default function PageTemplate(props) {
+export default function ContentTemplate(props) {
   return (
     <React.Fragment>
       <Helmet>
@@ -18,7 +18,7 @@ export default function PageTemplate(props) {
   )
 }
 
-PageTemplate.propTypes = {
+ContentTemplate.propTypes = {
     children: propTypes.oneOfType([
         propTypes.arrayOf(propTypes.element),
         propTypes.element

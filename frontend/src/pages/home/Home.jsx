@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react'
 import { CircularProgress } from '@mui/material'
-import PageTemplate from '../../components/templates/PageTemplate'
-import SectionTemplate from '../../components/templates/SectionTemplate'
+import ContentTemplate from '../../components/templates/content/ContentTemplate'
+import SectionTemplate from '../../components/templates/section/SectionTemplate'
 
 export default function Home() {
   return (
     <React.Fragment>
-      <PageTemplate
+      <ContentTemplate
         pageID={"hp"}
         label={"homepage"}
         meta={{ title: "Solaris Esports | irgendnen Text" }}
@@ -20,7 +20,7 @@ export default function Home() {
             <h1>Test</h1>
           </SectionTemplate>
         </Suspense>
-      </PageTemplate>
+      </ContentTemplate>
     </React.Fragment>
   );
 }

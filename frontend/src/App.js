@@ -3,14 +3,15 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { CircularProgress } from '@mui/material';
 import "./styles/style.css"
 import "./styles/variables.css"
-import Navbar from './components/common/Navbar';
-import Footer from './components/common/Footer';
+import "./styles/ctaButton.css"
+import Navbar from './components/common/header/Header';
+import Footer from './components/common/footer/Footer';
+
 const Home = lazy(() => import('./pages/home/Home'));
 
 const Layout = () => {
   return (
     <div className='CRA__config--root'>
-      <Navbar/>
       <Outlet/>
       <Footer/>
     </div>
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         path: "/",
         element: (
           <Suspense fallback={<CircularProgress />}>
+            <Navbar hasGuides={false} variant={""}/>
             <Home />
           </Suspense>
         ),
@@ -43,7 +45,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <Suspense fallback={<CircularProgress/>}>
+      <Suspense fallback={<CircularProgress />}>
         <RouterProvider router={router}/>
       </Suspense>
     </React.Fragment>
