@@ -3,21 +3,22 @@ import Logo from "../../../assets/svg/Logo.svg"
 import "./header.css"
 import propTypes from "prop-types"
 import Guides from '../guides/Guides';
+import SiteHeaderDroppdownTriggers from '../../../scripts/SiteHeaderDroppdownTriggers';
+import SiteMenuInit from '../../../scripts/SiteMenu';
 
 export default function Header(props) {
 
   const navLinks = [
-    {hasPopup: false, displayValue: "Startseite"},
+    {hasPopup: true, displayValue: "Startseite"},
     {hasPopup: true, displayValue: "News"},
     {hasPopup: true, displayValue: "Verein"},
     {hasPopup: true, displayValue: "Teams"},
-    {hasPopup: true, displayValue: "Community"},
+    {hasPopup: false, displayValue: "Community"},
   ]
 
   useEffect(() => {
-
-    document.querySelector("header").style = `--siteMenuArrowOffset: ${200}px`
-    document.querySelector(".SiteMenu").style = `--siteMenuHeight: ${373}px; width: 604px; pointer-events: none;`
+    SiteHeaderDroppdownTriggers();
+    SiteMenuInit();
   },[])
   
   return (
@@ -26,6 +27,7 @@ export default function Header(props) {
         className={`SiteHeader ${
           props?.hasGuides && "SiteHeader--hasGuides"
         } variant--${(props?.variant && props.variant) || "Standart"}`}
+        data-js-target="SiteHeader"
       >
         {props?.hasGuides && (
           <div className="SiteHeader__guidesContiner">
@@ -47,12 +49,15 @@ export default function Header(props) {
                   <li
                     key={`${link.displayValue}${index}`}
                     className="SiteHeaderNavItem"
-                  >
+                    data-js-target="SiteHeaderDroppdownTriggers"
+                    >
                     <button
                       className={`${
                         link?.hasPopup ? "" : "Link"
                       } SiteHeaderNavItem__link`}
                       aria-haspopup={(link?.hasPopup && true) || false}
+                      data-check-for-popup={(link?.hasPopup && true) || undefined}
+                      aria-expanded={(link?.hasPopup && false) || undefined}
                     >
                       {link?.displayValue || "error"}
                     </button>
@@ -67,12 +72,48 @@ export default function Header(props) {
             </nav>
             <div className="SiteHeader__menuContainer">
               <div className="SiteHeaderArrow" aria-hidden={true}></div>
-              <div className="SiteMenu SiteHeader__menu" hidden={true}>
+              <div className="SiteMenu SiteHeader__menu" hidden={true} data-js-target="SiteMenu">
                 <div className="Card SiteMenu__card">
-                  <div className="SiteMenu__section SiteMenu__section--left" aria-hidden={true} hidden={true}></div>
-                  <div className="SiteMenu__section SiteMenu__section--left" aria-hidden={true} hidden={true}></div>
-                  <div className="SiteMenu__section SiteMenu__section--left" aria-hidden={true} hidden={true}></div>
-                  <div className="SiteMenu__section SiteMenu__section--left" aria-hidden={true} hidden={true}></div>
+                  <div className="SiteMenu__section SiteMenu__section--left" data-js-target="SiteMenuSection" aria-hidden={true} hidden={true}>
+                    <section className="SiteMenuSection">
+                      <div className="SiteMenuSection__body">
+                        <div className="SiteSubMenu">
+                          <div className="SiteSubMenu__nav">
+                            <span className="SiteSubMenu__navHoverBackground">
+                              <img src="" alt="" />
+                            </span>
+                            <div>
+                              <button className='SiteSubNavItem'>
+                                <strong className='SiteSubNavItem__label'>hier das label</strong>
+                                <p className="SiteSubNavItem__body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo, quasi!</p>
+                              </button>
+                            </div>
+                          </div>
+                          <div className="SiteSubMenu__sectionList">
+                            <div className="SiteSubMenuSection">
+                              <section className="SiteNavList">
+                                <ul className='SiteNavList__list'>
+                                  <li className='SiteNavItem'>
+                                    <a href="" className='SiteNavItem__link'>
+                                      <span className='SiteNavItem__iconContainer'>
+                                        <img src="" alt="" />
+                                      </span>
+                                      <span className='SiteNavItem__labelContainer'>Lol irgendwie
+                                        <p className='SiteNavItem__body'>Irgendnen scheiß balb bla</p>
+                                      </span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <div className="SiteMenu__section SiteMenu__section--left" data-js-target="SiteMenuSection" aria-hidden={true} hidden={true}></div>
+                  <div className="SiteMenu__section SiteMenu__section--left" data-js-target="SiteMenuSection" aria-hidden={true} hidden={true}></div>
+                  <div className="SiteMenu__section SiteMenu__section--left" data-js-target="SiteMenuSection" aria-hidden={true} hidden={true}></div>
                 </div>
               </div>
             </div>
