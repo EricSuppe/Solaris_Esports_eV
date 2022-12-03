@@ -1,0 +1,95 @@
+.SiteHeader {
+    --siteMenuArrowSpacing: 13px;
+    --siteMenuArrowOffset: 0;
+    --siteMenuTransition: 250ms;
+    position: relative;
+    background-color: var(--backgroundColor);
+    z-index: 1000;
+}
+@media (prefers-reduced-motion: reduce) {
+    .SiteHeader {
+        /* --siteMenuTransition: 1ms; */
+    }
+}
+@media (max-width: 899px) {
+    .SiteHeader {
+        --desktopNavDisplay: none;
+    }
+}
+@media (min-width: 900px) {
+    .SiteHeader {
+        --mobileNavDisplay: none;
+        --tabletOverlayDisplay: none;
+    }
+}
+.SiteHeader.variant--Overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background: none;
+}
+.SiteHeader__container {
+    position: relative;
+    max-width: var(--layoutWidth);
+    margin: 0 auto;
+    padding: 0;
+}
+.SiteHeader__navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px var(--paddingContentNormal) 12px;
+}
+@media (min-width: 900px) {
+    .SiteHeader__navContainer { 
+        padding: 12px var(--paddingContentNormal);
+    }
+}
+.SiteHeader__logoLink {
+    display: block;
+    outline: none;
+    padding: 4px;
+    margin: -4px;
+}
+.SiteHeaderNav__list {
+    display: var(--desktopNavDisplay, flex);
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.SiteHeaderNavItem__link, 
+.SiteHeaderNavItem__link.Link {
+    --linkColor: var(--navColor);
+    --linkHoverColor: var(--navHoverColor);
+    --linkHoverOpactiy: var(--navHoverOpacity);
+    display: block;
+    padding: 21px 20px;
+    letter-spacing: .2px;
+    color: var(--linkColor);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 20px;
+}
+.SiteHeaderNavItem__link.Link[aria-haspopup=true],
+.SiteHeaderNavItem__link[aria-haspopup=true] {
+    cursor:default;
+    transition:var(--hoverTransition);
+    transition-property:color,opacity
+}
+.SiteHeaderNavItem__link.Link[aria-expanded=true],
+.SiteHeaderNavItem__link[aria-expanded=true] {
+    color:var(--linkHoverColor);
+    opacity:var(--linkHoverOpacity)
+}
+.SiteHeaderNavItem__link.Link[aria-haspopup="true"] {
+    cursor: default;
+    transition: none;
+    transition-property: color, opacity;
+}
+.SiteHeader__ctaNav {
+    display: var(--desktopNavDisplay, initial);
+}

@@ -1,0 +1,137 @@
+.SiteSubMenu {
+    --siteSubMenuBackgroundColor: #f0f3f6;
+    --siteSubMenuTriggerOffsetY: 0px;
+    --siteSubMenuTriggerOffsetYCenter: 42px;
+    --siteSubMenuTriggerBackgroundHeight: 84px;
+    --siteSubMenuTriggerTransition: transform 150ms linear,height 150ms;
+    --siteSubMenuNavWidth: 264px;
+    --siteSubMenuSectionListWidth: 528px;
+    --siteSubMenuNavGap: 4px;
+    --siteSubMenuSectionListBackgroundRadius: 4px;
+    --siteNavIconLabelLineHeight: 24px;
+    --siteNavIconBodyLineHeight: 16px;
+    display: inline-grid;
+    gap: var(--siteSubMenuNavGap);
+    grid: auto/var(--siteSubMenuNavWidth) var(--siteSubMenuSectionListWidth);
+    padding: 4px;
+    border-radius: 0;
+    background-color: var(--siteSubMenuBackgroundColor);
+}
+.SiteSubMenu__nav {
+    position: relative;
+}
+.SiteSubMenu__navHoverBackground {
+    position: absolute;
+    transform: translateY(var(--siteSubMenuTriggerOffsetY));
+    will-change: transform,height;
+    z-index: 1;
+    width: 100%;
+    height: var(--siteSubMenuTriggerBackgroundHeight);
+    border-radius: 0px;
+    background-color: #fff;
+}
+.SiteSubMenu__navHoverArrow {
+    position: absolute;
+    right: -12px;
+    z-index: 1;
+    margin-top: -14px;
+    top: 50%;
+  }
+.SiteSubNavItem {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 16px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    cursor: default;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.SiteSubNavItem__label {
+    color: var(--navColor);
+    letter-spacing: .2px;
+}
+.SiteSubNavItem__body {
+    color: #4f5b76;
+    letter-spacing: .2px;
+}
+.SiteSubMenu__sectionList {
+    display: flex;
+    background-color: #fff;
+    border-radius: var(--siteSubMenuSectionListBackgroundRadius);
+    overflow: hidden;
+}
+.SiteSubMenuSection {
+    --siteSubMenuSectionNavOffset: 0;
+    --siteSubMenuSectionPadding: 28px;
+    position: relative;
+    transform: translateY(0);
+    transition-property: transform,opacity;
+    will-change: transform,opacity;
+    z-index: 2;
+    display: grid;
+    grid: auto/repeat(2,1fr);
+    -moz-column-gap: 24px;
+    column-gap: 24px;
+    width: var(--siteSubMenuSectionListWidth);
+    flex-shrink: 0;
+    padding: var(--siteSubMenuSectionPadding);
+    opacity: 1;
+}
+.SiteNavList {
+    --siteNavIconSpacingTop: 0;
+    --siteNavIconSpacingRight: 10px;
+    --siteNavListMinWidth: 254px;
+}
+.SiteSubMenu .SiteNavList {
+    --siteNavListMinWidth: 220px;
+}
+.SiteNavList__list {
+    min-width: var(--siteNavListMinWidth);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.SiteNavItem {
+    --SiteNavItemBodyWhiteSpace: nowrap;
+    --SiteNavItemBodyHyphens: none;
+    --SiteNavItemBodyWordBreak: normal;
+    margin-left: 0;
+    letter-spacing: .2px;
+}
+.SiteNavItem__link {
+    display: inline-flex;
+    color: #0a2540;
+    outline: none;
+    align-items: start;
+}
+.SiteNavItem__iconContainer {
+    --iconLightColor: #88add2;
+    --iconDarkColor: #0a2540;
+    --iconKnockoutColor: #fff;
+    flex: 0 0 auto;
+    width: var(--siteNavIconSize);
+    height: var(--siteNavIconSize);
+    margin-top: var(--siteNavIconSpacingTop);
+    margin-right: var(--siteNavIconSpacingRight);
+}
+.SiteNavItem__label {
+    color: inherit;
+    line-height: var(--siteNavIconLabelLineHeight,inherit);
+}
+.SiteNavItem__body {
+    color: inherit;
+    line-height: var(--siteNavIconBodyLineHeight,inherit);
+    opacity: .6;
+    transition: var(--hoverTransition);
+    transition-property: opacity;
+    white-space: var(--SiteNavItemBodyWhiteSpace);
+    word-break: var(--SiteNavItemBodyWordBreak);
+    -webkit-hyphens: var(--SiteNavItemBodyHyphens);
+    -ms-hyphens: var(--SiteNavItemBodyHyphens);
+    hyphens: var(--SiteNavItemBodyHyphens);
+}

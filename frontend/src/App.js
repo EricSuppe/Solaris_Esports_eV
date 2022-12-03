@@ -4,7 +4,8 @@ import { CircularProgress } from '@mui/material';
 import "./styles/style.css"
 import "./styles/variables.css"
 import "./styles/ctaButton.css"
-import Navbar from './components/common/header/Header';
+import "./styles/font/clash-display.css"
+import Navbar from './components/common/header/SiteHeader';
 import Footer from './components/common/footer/Footer';
 
 const Home = lazy(() => import('./pages/home/Home'));
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         path: "/",
         element: (
           <Suspense fallback={<CircularProgress />}>
-            <Navbar hasGuides={false} variant={""}/>
+            <Navbar hasGuides={false} variant={"Overlay"}/>
             <Home />
           </Suspense>
         ),

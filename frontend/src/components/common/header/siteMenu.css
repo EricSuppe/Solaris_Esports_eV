@@ -1,0 +1,119 @@
+.SiteHeader__menuContainer {
+    display: var(--desktopNavDisplay, block);
+    position: absolute;
+    top: calc(100% - 1px - var(--siteMenuArrowSpacing));
+    left: 0;
+    width: 100%;
+    height: 1000px;
+    z-index: 1;
+    pointer-events: none;
+    perspective: 2000px;
+    overflow: hidden;
+    opacity: 0;
+    transition-property: opacity;
+    transition: var(--siteMenuTransition);
+}
+.SiteHeader--dropdownVisible .SiteHeader__menuContainer {
+    opacity:1
+}
+.SiteHeaderArrow {
+    --siteHeaderArrowBackgroundColor: var(--cardBackground);
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    margin: 0 0 0 -6px;
+    width: 12px;
+    height: 12px;
+    transform: translateY(12px) translateX(var(--siteMenuArrowOffset)) rotate(45deg);
+    border-radius: 3px 0 0 0;
+    background-color: var(--siteHeaderArrowBackgroundColor);
+    box-shadow: -3px -3px 5px rgba(82,95,127,.04);
+    transition-property: transform;
+    transition-duration: var(--siteMenuTransition);
+    z-index: 2;
+}
+.SiteHeader--dropdownVisible .SiteHeaderArrow {
+    transform:translateY(0) translateX(var(--siteMenuArrowOffset)) rotate(45deg)
+}
+.SiteHeader__menu {
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+.SiteMenu {
+    --siteMenuOffset: 0;
+    --siteMenuRotateX: 0;
+    display: inline-block;
+    padding-top: var(--siteMenuArrowSpacing);
+    height: calc(var(--siteMenuHeight) + var(--siteMenuArrowSpacing));
+    transform: translateX(-50%) rotateX(var(--siteMenuRotateX));
+    transform-origin: 50% -50px;
+    transition: var(--siteMenuTransition);
+    transition-property: transform, width, height;
+    will-change: transform, width, height;
+    z-index: 2;
+}
+.SiteMenu[hidden] {
+    --siteMenuRotateX: -15deg;
+}
+.Card {
+    --cardBleedRightNormal: var(--columnWidth);
+    --cardBleedBottomNormal: 16px;
+    --cardShadow: none;
+    --cardShadowMargin: 0;
+    --cardMinHeight: 72px;
+    position: relative;
+    min-width: 100px;
+    min-height: var(--cardMinHeight);
+    max-width: var(--cardMaxWidth,none);
+    margin-right: calc(var(--cardBleedRight, 0)*-1);
+    margin-bottom: calc(var(--cardBleedBottom, 0)*-1);
+    background: var(--cardBackground);
+    box-shadow: var(--cardShadow);
+    overflow: hidden;
+}
+@media (min-width: 600px) {
+    /*TODO*/
+    .Card {
+        max-width: var(--cardMaxWidthTablet,var(--cardMaxWidth));
+    }
+}
+.SiteMenu__card.Card {
+    position: relative;
+    height: 100%;
+    z-index: 1;
+}
+.SiteMenu__section {
+    --siteMenuSectionOffset: 0;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateX(var(--siteMenuSectionOffset));
+    transition: var(--siteMenuTransition);
+    transition-property: transform,opacity;
+    will-change: transform,opacity;
+}
+.SiteMenu__section[hidden].SiteMenu__section--left {
+    --siteMenuSectionOffset: -150px;
+}
+.SiteMenu__section[hidden].SiteMenu__section--right {
+    --siteMenuSectionOffset: 150px;
+}
+.SiteMenu__section[hidden] {
+    opacity: 0;
+    pointer-events: none;
+}
+.SiteMenuSection {
+    --siteMenuSpacing: 24px;
+    position: relative;
+}
+@media (min-width: 900px) {
+    .SiteMenuSection {
+        display: inline-block;
+        --siteMenuSpacing: 32px;
+    }
+}
+.SiteMenuSection__body {
+    padding: 0;
+}
