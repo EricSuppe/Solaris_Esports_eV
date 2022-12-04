@@ -2,7 +2,8 @@ let siteHeader
 let siteHeaderMenu
 let siteHeaderMenuSection
 let siteHeaderDroppdownTriggers
-// let siteHeaderSubMenu;
+let siteHeaderSubMenu;
+let siteHeaderSubNavItem;
 
 let initialMenuheight = 484;
 let initalArrowOffset = 0;
@@ -16,15 +17,16 @@ function siteHeaderInit() {
     siteHeaderMenu = document.querySelector('[data-js-target="SiteMenu"]')
     siteHeaderMenuSection = document.querySelectorAll('[data-js-target="SiteMenuSection"]')
     siteHeaderDroppdownTriggers = document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]');
-    // siteHeaderSubMenu = document.querySelector('[data-js-target="SiteHeaderSubMenu"]');
-
+    siteHeaderSubMenu = document.querySelector('[data-js-target="SiteHeaderSubMenu"]');
+    siteHeaderSubNavItem = document.querySelectorAll('[data-js-target="SiteSubNavItem"]');
+    
     setSiteMenuProps(initialMenuheight);
     setArrowProps(initalArrowOffset);
-    // setSubMenuProps({
-    //     triggerOffsetY: initialSubMenuTriggerOffsetY, 
-    //     triggerOffsetYCenter: initialSubMenuTriggerOffsetYCenter,
-    //     triggerBackgroundHeight: initialSubMenuTriggerBackgroundHeight,
-    // })
+    setSubMenuProps({
+        triggerOffsetY: initialSubMenuTriggerOffsetY, 
+        triggerOffsetYCenter: initialSubMenuTriggerOffsetYCenter,
+        triggerBackgroundHeight: siteHeaderSubNavItem[0].offsetHeight || initialSubMenuTriggerBackgroundHeight,
+    })
 }
 
 export function handleLinkHover(event, element, index) {
@@ -48,6 +50,33 @@ export function handleLinkHover(event, element, index) {
             attrOnMouseLeave(element, index); 
         }
     }
+}
+
+export function handleSubNavHover(event, element, index) {
+    if(element.getAttribute('data-js-target') === "SiteSubNavItem") {
+        setSubMenuProps({
+            triggerOffsetY: initialSubMenuTriggerOffsetY, 
+            triggerOffsetYCenter: initialSubMenuTriggerOffsetYCenter,
+            triggerBackgroundHeight: element.offsetHeight,
+        })
+    }
+}
+
+export function closeSiteHeaderMenu() {
+    siteHeader.classList.remove("SiteHeader--dropdownVisible")
+    siteHeaderMenu.style.pointerEvents = "none"
+    siteHeaderDroppdownTriggers.forEach(element => {
+        if(element.firstChild.getAttribute("aria-expanded") === "true") {
+            element.firstChild.setAttribute("aria-expanded", false)
+        }
+    });
+    siteHeaderMenu.setAttribute("hidden", "")
+    siteHeaderMenuSection.forEach(element => {
+        if(element.getAttribute("aria-hidden") === "false") {
+            element.setAttribute("hidden", "")
+            element.setAttribute("aria-hidden", true)
+        }
+    })
 }
 
 function attrOnMouseEnter(element, index) {
@@ -98,29 +127,14 @@ function setArrowProps(value) {
     siteHeader.style = `--siteMenuArrowOffset: ${value}px`
 }
 
-// function setSubMenuProps(value) {
-//     siteHeaderSubMenu.style = 
-//         `--siteSubMenuTriggerOffsetY: ${value.triggerOffsetY}px; 
-//         --siteSubMenuTriggerOffsetYCenter: ${value.triggerOffsetYCenter}px;
-//         --siteSubMenuTriggerBackgroundHeight: ${value.triggerBackgroundHeight}px`
-// }
-
-export function closeSiteHeaderMenu() {
-    siteHeader.classList.remove("SiteHeader--dropdownVisible")
-    siteHeaderMenu.style.pointerEvents = "none"
-    siteHeaderDroppdownTriggers.forEach(element => {
-        if(element.firstChild.getAttribute("aria-expanded") === "true") {
-            element.firstChild.setAttribute("aria-expanded", false)
-        }
-    });
-    siteHeaderMenu.setAttribute("hidden", "")
-    siteHeaderMenuSection.forEach(element => {
-        if(element.getAttribute("aria-hidden") === "false") {
-            element.setAttribute("hidden", "")
-            element.setAttribute("aria-hidden", true)
-        }
-    })
+function setSubMenuProps(value) {
+    siteHeaderSubMenu.style = 
+        `--siteSubMenuTriggerOffsetY: ${value.triggerOffsetY}px; 
+        --siteSubMenuTriggerOffsetYCenter: ${value.triggerOffsetYCenter}px;
+        --siteSubMenuTriggerBackgroundHeight: ${value.triggerBackgroundHeight}px`
 }
+
+
 
 function isDescendant(parent, child) {
     var node = child.parentNode;

@@ -1,5 +1,6 @@
 import React from 'react'
 import propTypes from "prop-types"
+import { handleSubNavHover } from '../../../scripts/SiteHeader'
 
 export default function SiteHeaderMenuSection(props) {
     return (
@@ -82,8 +83,10 @@ SiteHeaderSubMenu.propTypes = {
 function SiteHeaderSubNavItem(props) {
     return (
         <button 
-            data-id={`${props.parentKey}`}
             className="SiteSubNavItem"
+            data-id={`${props.parentKey}`}
+            data-js-target="SiteSubNavItem"
+            onMouseEnter={(event) => handleSubNavHover(event, event.target)}
         >
             <strong className="SiteSubNavItem__label">
                 {(props?.label && props.label) || "error"}

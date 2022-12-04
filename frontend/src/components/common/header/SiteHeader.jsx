@@ -7,88 +7,9 @@ import propTypes from "prop-types"
 import Guides from '../guides/Guides';
 import siteHeaderInit, { handleLinkHover } from '../../../scripts/SiteHeader';
 import SiteHeaderMenuContainer from './SiteHeaderMenuContainer';
+import siteHeaderConfig from './SiteHeaderConfig'
 
 export default function Header(props) {
-  const siteHeaderConfig = {
-    config: [
-      {
-        key: "sHCI_", 
-        siteHeaderNavItem: {
-          key: "sHNI_", 
-          hasPopup: true, 
-          displayValue: "Startseite"
-        },
-        siteHeaderMenuSection: {
-          key: "sHMS_", 
-          hasSubMenu: true, 
-          subMenuNavItem: [
-            {
-              key: "sHSMNI_", 
-              label: "League Of Legends", 
-              description: "unsere League Of Legends Teams ein einem Blick"
-            },
-            {
-              key: "sHSMNI_", 
-              label: "Valorant", 
-              description: "unsere Valorant Teams ein einem Blick"
-            },
-          ],
-          subMenuSection: [
-            {
-              key: "sHSMS_", 
-              siteNavItemList: [
-                {
-                  key: "sHSMNIL_", 
-                  siteNavItem: [
-                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
-                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
-                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
-                  ]
-                },
-                {
-                  key: "sHSMNIL_", 
-                  siteNavItem: [
-                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
-                  ]
-                },
-              ]
-            },
-            {
-              key: "sHSMS_", 
-              siteNavItemList: [
-                {
-                  key: "sHSMNIL_", 
-                  siteNavItem: [
-                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
-                  ]
-                },
-              ]
-            },
-          ],
-        },
-      },
-      {
-        key: "sHCI_", 
-        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "News"},
-        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
-      },
-      {
-        key: "sHCI_", 
-        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "Verein"},
-        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
-      },
-      {
-        key: "sHCI_", 
-        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "Teams"},
-        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
-      },
-      {
-        key: "sHCI_", 
-        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "Community"},
-        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
-      },
-    ] 
-  }
 
   useEffect(() => {
     siteHeaderInit();
@@ -136,8 +57,11 @@ export default function Header(props) {
               </ul>
             </nav>
             <nav className="SiteHeader__ctaNav">
-              <a href="" className="CtaButton">
-                <span>Verein</span>
+              <a 
+                href={`${(siteHeaderConfig?.ctaButton?.link && siteHeaderConfig?.ctaButton?.link) || "/"}`} 
+                className="CtaButton"
+              >
+                <span>{(siteHeaderConfig?.ctaButton?.label && siteHeaderConfig?.ctaButton?.label) || "error"}</span>
               </a>
             </nav>
             <SiteHeaderMenuContainer {...siteHeaderConfig}/>

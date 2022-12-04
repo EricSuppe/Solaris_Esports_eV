@@ -6,21 +6,25 @@ import propTypes from "prop-types"
 export default function SiteHeaderMenuContainer(props) {
     return (
         <div className="SiteHeader__menuContainer">
-            <div className="SiteHeaderArrow" aria-hidden={true}></div>
+            <div 
+                className="SiteHeaderArrow" 
+                aria-hidden={true}
+            />
             <div
                 className="SiteMenu SiteHeader__menu"
                 hidden={true}
                 data-js-target="SiteMenu"
                 onMouseLeave={() => closeSiteHeaderMenu()}
-                >
+            >
                 <div 
-                className="Card SiteMenu__card"
-                data-js-target="SiteMenuCard"
+                    className="Card SiteMenu__card"
+                    data-js-target="SiteMenuCard"
                 >
                     {props?.config && props.config.map((item, index) => {
                         let {key, siteHeaderNavItem, ...passthrough} = item
+                        let dataKey = `${item.key}${item.siteHeaderMenuSection.key}${index}`
                         return (
-                            <SiteHeaderMenuSection key={`${item.key}${item.siteHeaderMenuSection.key}${index}`} {...passthrough}/> 
+                            <SiteHeaderMenuSection key={dataKey} {...passthrough}/> 
                         )  
                     })}       
                 </div>
