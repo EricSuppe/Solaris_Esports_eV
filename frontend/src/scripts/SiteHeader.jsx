@@ -2,9 +2,13 @@ let siteHeader
 let siteHeaderMenu
 let siteHeaderMenuSection
 let siteHeaderDroppdownTriggers
+// let siteHeaderSubMenu;
 
 let initialMenuheight = 484;
 let initalArrowOffset = 0;
+let initialSubMenuTriggerOffsetY = 0;
+let initialSubMenuTriggerOffsetYCenter = 48;
+let initialSubMenuTriggerBackgroundHeight = 96;
 
 function siteHeaderInit() {
     
@@ -12,16 +16,22 @@ function siteHeaderInit() {
     siteHeaderMenu = document.querySelector('[data-js-target="SiteMenu"]')
     siteHeaderMenuSection = document.querySelectorAll('[data-js-target="SiteMenuSection"]')
     siteHeaderDroppdownTriggers = document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]');
+    // siteHeaderSubMenu = document.querySelector('[data-js-target="SiteHeaderSubMenu"]');
 
-    setMenuHeightVar(initialMenuheight);
-    setArrowOffset(initalArrowOffset);
+    setSiteMenuProps(initialMenuheight);
+    setArrowProps(initalArrowOffset);
+    // setSubMenuProps({
+    //     triggerOffsetY: initialSubMenuTriggerOffsetY, 
+    //     triggerOffsetYCenter: initialSubMenuTriggerOffsetYCenter,
+    //     triggerBackgroundHeight: initialSubMenuTriggerBackgroundHeight,
+    // })
 }
 
 export function handleLinkHover(event, element, index) {
     if(event.type === "mouseenter") {
         attrOnMouseEnter(element, index)
-        setArrowOffset(element.offsetLeft + element.offsetWidth/2 - 630)
-        setMenuHeightVar(siteHeaderMenuSection[index].offsetHeight)
+        setArrowProps(element.offsetLeft + element.offsetWidth/2 - 630)
+        setSiteMenuProps(siteHeaderMenuSection[index].offsetHeight)
         siteHeaderMenu.style.pointerEvents = "auto"
         if(!event.relatedTarget.hasAttribute("aria-haspopup")) {
             siteHeader.classList.add("SiteHeader--dropdownVisible") 
@@ -79,14 +89,21 @@ function attrOnMouseLeave(element, index) {
     siteHeaderMenuSection[index].setAttribute("aria-hidden", true)
 }
 
-function setMenuHeightVar(value) {
+function setSiteMenuProps(value) {
     const currentStyle = siteHeaderMenu.style;
     siteHeaderMenu.style = `--siteMenuHeight: ${value}px; width: 804px; ${currentStyle};`
 }
 
-function setArrowOffset(value) {
+function setArrowProps(value) {
     siteHeader.style = `--siteMenuArrowOffset: ${value}px`
 }
+
+// function setSubMenuProps(value) {
+//     siteHeaderSubMenu.style = 
+//         `--siteSubMenuTriggerOffsetY: ${value.triggerOffsetY}px; 
+//         --siteSubMenuTriggerOffsetYCenter: ${value.triggerOffsetYCenter}px;
+//         --siteSubMenuTriggerBackgroundHeight: ${value.triggerBackgroundHeight}px`
+// }
 
 export function closeSiteHeaderMenu() {
     siteHeader.classList.remove("SiteHeader--dropdownVisible")

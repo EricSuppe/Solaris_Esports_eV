@@ -1,5 +1,5 @@
 .SiteSubMenu {
-    --siteSubMenuBackgroundColor: #f0f3f6;
+    --siteSubMenuBackgroundColor: var(--backgroundColorLighter);
     --siteSubMenuTriggerOffsetY: 0px;
     --siteSubMenuTriggerOffsetYCenter: 42px;
     --siteSubMenuTriggerBackgroundHeight: 84px;
@@ -28,7 +28,7 @@
     width: 100%;
     height: var(--siteSubMenuTriggerBackgroundHeight);
     border-radius: 0px;
-    background-color: #fff;
+    background-color: var(--backgroundColorLayer2);
 }
 .SiteSubMenu__navHoverArrow {
     position: absolute;
@@ -61,7 +61,7 @@
 }
 .SiteSubMenu__sectionList {
     display: flex;
-    background-color: #fff;
+    background-color: var(--backgroundColorLayer2);
     border-radius: var(--siteSubMenuSectionListBackgroundRadius);
     overflow: hidden;
 }

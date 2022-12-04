@@ -17,7 +17,7 @@
     opacity:1
 }
 .SiteHeaderArrow {
-    --siteHeaderArrowBackgroundColor: var(--cardBackground);
+    --siteHeaderArrowBackgroundColor: var(--backgroundColorLayer1);
     position: absolute;
     top: 8px;
     left: 50%;
@@ -68,7 +68,7 @@
     max-width: var(--cardMaxWidth,none);
     margin-right: calc(var(--cardBleedRight, 0)*-1);
     margin-bottom: calc(var(--cardBleedBottom, 0)*-1);
-    background: var(--cardBackground);
+    background: var(--backgroundColorLayer1);
     box-shadow: var(--cardShadow);
     overflow: hidden;
 }

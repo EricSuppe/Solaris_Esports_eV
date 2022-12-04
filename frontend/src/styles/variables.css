@@ -48,10 +48,11 @@ html {
     --guideSolidColor: rgba(97, 97, 97, 0.137);
     --guideDashedColor: rgba(97, 97, 97, 0.255);
     --backgroundColor: #121212;
-    --navColor: #343434;
-    --navHoverColor: #fff;
+    --backgroundColorLayer1: #3d3939;
+    --backgroundColorLayer2: #6d6464;
+    --navColor: #d8d8d8;
+    --navHoverColor: var(--accentColor);
     --navHoverOpacity: .6;
-    --cardBackground: #fff;
 }
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;

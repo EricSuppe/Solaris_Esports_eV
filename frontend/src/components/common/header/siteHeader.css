@@ -8,7 +8,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
     .SiteHeader {
-        /* --siteMenuTransition: 1ms; */
+        --siteMenuTransition: 1ms;
     }
 }
 @media (max-width: 899px) {
@@ -46,10 +46,12 @@
     }
 }
 .SiteHeader__logoLink {
-    display: block;
+    display: flex;
     outline: none;
     padding: 4px;
     margin: -4px;
+    align-items: center;
+    justify-content: center;
 }
 .SiteHeaderNav__list {
     display: var(--desktopNavDisplay, flex);
@@ -63,6 +65,7 @@
     --linkColor: var(--navColor);
     --linkHoverColor: var(--navHoverColor);
     --linkHoverOpactiy: var(--navHoverOpacity);
+    --linkHoverTransition: var(--siteMenuTransition);
     display: block;
     padding: 21px 20px;
     letter-spacing: .2px;
@@ -71,19 +74,19 @@
     background-color: transparent;
     border: none;
     outline: none;
-    font-weight: 700;
-    font-size: 20px;
+    font-family: "ClashDisplay-Bold";
+    font-size: 22px;
 }
 .SiteHeaderNavItem__link.Link[aria-haspopup=true],
 .SiteHeaderNavItem__link[aria-haspopup=true] {
-    cursor:default;
-    transition:var(--hoverTransition);
-    transition-property:color,opacity
+    cursor: default;
+    transition: var(--linkHoverTransition);
+    transition-property: color, opacity
 }
 .SiteHeaderNavItem__link.Link[aria-expanded=true],
 .SiteHeaderNavItem__link[aria-expanded=true] {
-    color:var(--linkHoverColor);
-    opacity:var(--linkHoverOpacity)
+    color: var(--linkHoverColor);
+    opacity: var(--linkHoverOpacity)
 }
 .SiteHeaderNavItem__link.Link[aria-haspopup="true"] {
     cursor: default;

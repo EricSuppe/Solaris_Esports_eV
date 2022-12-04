@@ -5,14 +5,14 @@ import "./styles/style.css"
 import "./styles/variables.css"
 import "./styles/ctaButton.css"
 import "./styles/font/clash-display.css"
-import Navbar from './components/common/header/SiteHeader';
+import SiteHeader from './components/common/header/SiteHeader';
 import Footer from './components/common/footer/Footer';
 
 const Home = lazy(() => import('./pages/home/Home'));
 
 const Layout = () => {
   return (
-    <div className='CRA__config--root'>
+    <div className='CRA__config--root flavor--Primary'>
       <Outlet/>
       <Footer/>
     </div>
@@ -27,15 +27,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense fallback={<CircularProgress />}>
-            <Navbar hasGuides={false} variant={"Overlay"}/>
-            <Home />
-          </Suspense>
+          <React.Fragment>
+            <SiteHeader hasGuides={false} variant={"Overlay"}/>
+            <Suspense fallback={<CircularProgress />}>
+              <Home />
+            </Suspense>
+          </React.Fragment>
         ),
       },
     ],
   },
 ]);
+
 
 function App() {
   useEffect(() => {

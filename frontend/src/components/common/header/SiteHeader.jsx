@@ -9,14 +9,86 @@ import siteHeaderInit, { handleLinkHover } from '../../../scripts/SiteHeader';
 import SiteHeaderMenuContainer from './SiteHeaderMenuContainer';
 
 export default function Header(props) {
-
-  const navLinks = [
-    {hasPopup: true, displayValue: "Startseite"},
-    {hasPopup: true, displayValue: "News"},
-    {hasPopup: true, displayValue: "Verein"},
-    {hasPopup: true, displayValue: "Teams"},
-    {hasPopup: true, displayValue: "Community"},
-  ]
+  const siteHeaderConfig = {
+    config: [
+      {
+        key: "sHCI_", 
+        siteHeaderNavItem: {
+          key: "sHNI_", 
+          hasPopup: true, 
+          displayValue: "Startseite"
+        },
+        siteHeaderMenuSection: {
+          key: "sHMS_", 
+          hasSubMenu: true, 
+          subMenuNavItem: [
+            {
+              key: "sHSMNI_", 
+              label: "League Of Legends", 
+              description: "unsere League Of Legends Teams ein einem Blick"
+            },
+            {
+              key: "sHSMNI_", 
+              label: "Valorant", 
+              description: "unsere Valorant Teams ein einem Blick"
+            },
+          ],
+          subMenuSection: [
+            {
+              key: "sHSMS_", 
+              siteNavItemList: [
+                {
+                  key: "sHSMNIL_", 
+                  siteNavItem: [
+                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
+                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
+                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
+                  ]
+                },
+                {
+                  key: "sHSMNIL_", 
+                  siteNavItem: [
+                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
+                  ]
+                },
+              ]
+            },
+            {
+              key: "sHSMS_", 
+              siteNavItemList: [
+                {
+                  key: "sHSMNIL_", 
+                  siteNavItem: [
+                    {key: "sHSMNI_", label: "SLR Solaris Esports", description: "Unser erstes Main Team", image: "", imageAlt: "logo", link: ""},
+                  ]
+                },
+              ]
+            },
+          ],
+        },
+      },
+      {
+        key: "sHCI_", 
+        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "News"},
+        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
+      },
+      {
+        key: "sHCI_", 
+        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "Verein"},
+        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
+      },
+      {
+        key: "sHCI_", 
+        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "Teams"},
+        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
+      },
+      {
+        key: "sHCI_", 
+        siteHeaderNavItem: {key: "sHNI_", hasPopup: true, displayValue: "Community"},
+        siteHeaderMenuSection: {key: "sHMS_", hasSubMenu: false},
+      },
+    ] 
+  }
 
   useEffect(() => {
     siteHeaderInit();
@@ -44,20 +116,20 @@ export default function Header(props) {
             </h1>
             <nav className="SiteHeaderNav">
               <ul className="SiteHeaderNav__list">
-                {navLinks.map((link, index) => (
+                {siteHeaderConfig.config.map((item, index) => (
                   <li
-                    key={`${link.displayValue}${index}`}
+                    key={`${item.key}${index}`}
                     className="SiteHeaderNavItem"
                     data-js-target="SiteHeaderDroppdownTriggers"
                     onMouseEnter={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
                     onMouseLeave={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
                   >
                     <button
-                      className={`${link?.hasPopup ? "" : "Link"} SiteHeaderNavItem__link`}
-                      aria-haspopup={(link?.hasPopup && true) || false}
-                      aria-expanded={(link?.hasPopup && "false") || undefined}
+                      className={`${item?.siteHeaderNavItem?.hasPopup ? "" : "Link"} SiteHeaderNavItem__link`}
+                      aria-haspopup={(item?.siteHeaderNavItem?.hasPopup && true) || false}
+                      aria-expanded={(item?.siteHeaderNavItem?.hasPopup && "false") || undefined}
                     >
-                      {link?.displayValue || "error"}
+                      {item?.siteHeaderNavItem?.displayValue || "error"}
                     </button>
                   </li>
                 ))}
@@ -65,18 +137,18 @@ export default function Header(props) {
             </nav>
             <nav className="SiteHeader__ctaNav">
               <a href="" className="CtaButton">
-                <span>Mitglied werden</span>
+                <span>Verein</span>
               </a>
             </nav>
-            <SiteHeaderMenuContainer />
+            <SiteHeaderMenuContainer {...siteHeaderConfig}/>
           </div>
         </div>
       </header>
     </React.Fragment>
   );
 }
-
 Header.propTypes = {
   hasGuides: propTypes.bool,
   variant: propTypes.string,
 }
+
