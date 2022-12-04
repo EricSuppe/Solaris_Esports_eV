@@ -44,7 +44,8 @@ function SiteHeaderSubMenu(props) {
                         />
                         <path 
                             fillRule="evenodd" 
-                            clipRule="evenodd" d="m0 27.657 9.41421-9.4142c2.34319-2.3432 2.34319-6.1422.00001-8.48532L0 .343262V6.00012l6.58579 6.58578c.78105.7811.78105 2.0474 0 2.8284L0 22.0001v5.6569Z" 
+                            clipRule="evenodd" 
+                            d="m0 27.657 9.41421-9.4142c2.34319-2.3432 2.34319-6.1422.00001-8.48532L0 .343262V6.00012l6.58579 6.58578c.78105.7811.78105 2.0474 0 2.8284L0 22.0001v5.6569Z" 
                             fill="var(--backgroundColorLayer1)"
                         />
                     </svg>
@@ -54,7 +55,12 @@ function SiteHeaderSubMenu(props) {
                         let {key, ...passthrough} = item
                         let dataKey = `${item.key}${index}`
                         return (
-                            <SiteHeaderSubNavItem key={dataKey} {...passthrough} parentKey={dataKey}/>
+                            <SiteHeaderSubNavItem 
+                                key={dataKey}
+                                parentKey={dataKey}
+                                nodeIndex={index}
+                                {...passthrough} 
+                            />
                         )
                     })}
                 </div>
@@ -86,7 +92,8 @@ function SiteHeaderSubNavItem(props) {
             className="SiteSubNavItem"
             data-id={`${props.parentKey}`}
             data-js-target="SiteSubNavItem"
-            onMouseEnter={(event) => handleSubNavHover(event, event.target)}
+            onMouseEnter={(event) => handleSubNavHover(event, event.target, props.nodeIndex)}
+            onMouseLeave={(event) => handleSubNavHover(event, event.target, props.nodeIndex)}
         >
             <strong className="SiteSubNavItem__label">
                 {(props?.label && props.label) || "error"}
@@ -99,6 +106,7 @@ function SiteHeaderSubNavItem(props) {
 }
 SiteHeaderSubNavItem.propTypes = {
     parentKey: propTypes.string.isRequired,
+    nodeIndex: propTypes.number.isRequired,
     label: propTypes.string,
     description: propTypes.string,
 }
@@ -119,7 +127,11 @@ function SiteSubMenuSection(props) {
                 let {key, ...passthrough} = item
                 let dataKey = `${props.parentKey}_${props.nodeIndex}_${item.key}${index}`
                 return (
-                    <SiteNavList key={dataKey} {...passthrough} parentKey={dataKey}/>
+                    <SiteNavList 
+                        key={dataKey} 
+                        parentKey={dataKey}
+                        {...passthrough} 
+                    />
                 )
             })}
         </div>
@@ -139,7 +151,11 @@ function SiteNavList(props) {
                     let {key, ...passthrough} = item
                     let dataKey = `${props.parentKey}_${item.key}${index}`
                     return (
-                        <SiteNavItem key={dataKey} {...passthrough} parentKey={dataKey}/>
+                        <SiteNavItem 
+                            key={dataKey} 
+                            parentKey={dataKey}
+                            {...passthrough} 
+                        />
                     )
                 })}
             </ul>

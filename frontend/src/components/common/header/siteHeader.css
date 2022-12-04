@@ -8,7 +8,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
     .SiteHeader {
-        --siteMenuTransition: 1ms;
+        /* --siteMenuTransition: 1ms; */
     }
 }
 @media (max-width: 899px) {

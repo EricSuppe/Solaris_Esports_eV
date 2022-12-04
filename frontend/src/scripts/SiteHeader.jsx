@@ -4,6 +4,7 @@ let siteHeaderMenuSection
 let siteHeaderDroppdownTriggers
 let siteHeaderSubMenu;
 let siteHeaderSubNavItem;
+let siteHeaderSubMenuSection;
 
 let initialMenuheight = 484;
 let initalArrowOffset = 0;
@@ -19,7 +20,8 @@ function siteHeaderInit() {
     siteHeaderDroppdownTriggers = document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]');
     siteHeaderSubMenu = document.querySelector('[data-js-target="SiteHeaderSubMenu"]');
     siteHeaderSubNavItem = document.querySelectorAll('[data-js-target="SiteSubNavItem"]');
-    
+    siteHeaderSubMenuSection = document.querySelectorAll('[data-js-target="SiteSubMenuSection"]')
+
     setSiteMenuProps(initialMenuheight);
     setArrowProps(initalArrowOffset);
     setSubMenuProps({
@@ -35,30 +37,37 @@ export function handleLinkHover(event, element, index) {
         setArrowProps(element.offsetLeft + element.offsetWidth/2 - 630)
         setSiteMenuProps(siteHeaderMenuSection[index].offsetHeight)
         siteHeaderMenu.style.pointerEvents = "auto"
-        if(!event.relatedTarget.hasAttribute("aria-haspopup")) {
+        if(event.relatedTarget instanceof HTMLElement && !event.relatedTarget.hasAttribute("aria-haspopup")) {
             siteHeader.classList.add("SiteHeader--dropdownVisible") 
         }
     } 
     if(event.type === "mouseleave") {
-        if(!event.relatedTarget.hasAttribute("aria-haspopup")) {
+        if(event.relatedTarget instanceof HTMLElement && !event.relatedTarget.hasAttribute("aria-haspopup")) {
             if(event.relatedTarget.getAttribute("data-js-target") !== "SiteMenu" && !isDescendant(siteHeaderMenu, event.relatedTarget)) {
                 siteHeader.classList.remove("SiteHeader--dropdownVisible") 
                 siteHeaderMenu.style.pointerEvents = "none"
             }
         }
-        if(event.relatedTarget.getAttribute("data-js-target") !== "SiteMenu" && !isDescendant(siteHeaderMenu, event.relatedTarget)) {
+        if(event.relatedTarget instanceof HTMLElement && event.relatedTarget.getAttribute("data-js-target") !== "SiteMenu" && !isDescendant(siteHeaderMenu, event.relatedTarget)) {
             attrOnMouseLeave(element, index); 
         }
     }
 }
 
 export function handleSubNavHover(event, element, index) {
-    if(element.getAttribute('data-js-target') === "SiteSubNavItem") {
-        setSubMenuProps({
-            triggerOffsetY: initialSubMenuTriggerOffsetY, 
-            triggerOffsetYCenter: initialSubMenuTriggerOffsetYCenter,
-            triggerBackgroundHeight: element.offsetHeight,
-        })
+    if(event.type === "mouseenter") {
+        if(element.getAttribute('data-js-target') === "SiteSubNavItem") {
+            let offset = 0;
+            for(let i = 0; i < index; i++) {
+                offset += siteHeaderSubNavItem[i].offsetHeight
+            }
+            setSubMenuProps({
+                triggerOffsetY: offset, 
+                triggerOffsetYCenter: initialSubMenuTriggerOffsetYCenter,
+                triggerBackgroundHeight: element.offsetHeight,
+            })
+            subMenuOnMouseEnter(siteHeaderSubNavItem[index], index)
+        }
     }
 }
 
@@ -105,10 +114,33 @@ function attrOnMouseEnter(element, index) {
     }
     siteHeaderMenuSection[index].classList.remove("SiteMenu__section--right")
     siteHeaderMenuSection[index].classList.remove("SiteMenu__section--left")
-    for(let i = index + 1; i < 4; i++) {
+    for(let i = index + 1; i < siteHeaderMenuSection.length; i++) {
         siteHeaderMenuSection[i].classList.add("SiteMenu__section--right")
         siteHeaderMenuSection[i].classList.remove("SiteMenu__section--left")
     }
+}
+
+function subMenuOnMouseEnter(element, index) {
+    element.setAttribute("aria-expanded", true)
+    for(let i = 0; i < siteHeaderSubNavItem.length; i++) {
+        if(i !== index) {
+            siteHeaderSubNavItem[i].setAttribute("aria-expanded", false)
+            siteHeaderSubMenuSection[i].setAttribute("aria-hidden", true)
+            siteHeaderSubMenuSection[i].setAttribute("hidden", true)
+        }
+    }
+    siteHeaderSubMenuSection[index].setAttribute("aria-hidden", false)
+    siteHeaderSubMenuSection[index].removeAttribute("hidden")
+    for(let i = 0; i < index; i++) {
+        siteHeaderSubMenuSection[i].classList.add("SiteSubMenuSection--before")
+        siteHeaderSubMenuSection[i].classList.remove("SiteSubMenuSection--after")
+    }
+    for(let i = index + 1; i < siteHeaderSubMenuSection.length; i++) {
+        siteHeaderSubMenuSection[i].classList.add("SiteSubMenuSection--after")
+        siteHeaderSubMenuSection[i].classList.remove("SiteSubMenuSection--before")
+    }
+    siteHeaderSubMenuSection[index].classList.remove("SiteSubMenuSection--after")
+    siteHeaderSubMenuSection[index].classList.remove("SiteSubMenuSection--before")
 }
 
 function attrOnMouseLeave(element, index) {
