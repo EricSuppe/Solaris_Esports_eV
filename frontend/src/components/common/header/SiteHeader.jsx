@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import Logo from "../../../assets/svg/Logo.svg"
-import "./siteHeader.css"
-import "./siteMenu.css"
-import "./siteSubMenu.css"
-import "./siteHeaderFooter.css"
+import "./style/siteHeader.css"
+import "./style/siteMenu.css"
+import "./style/siteSubMenu.css"
+import "./style/siteHeaderFooter.css"
 import propTypes from "prop-types"
 import Guides from '../guides/Guides';
 import siteHeaderInit, { handleLinkHover } from '../../../scripts/SiteHeader';

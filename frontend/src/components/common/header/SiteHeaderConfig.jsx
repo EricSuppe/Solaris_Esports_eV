@@ -93,10 +93,10 @@ const siteHeaderConfig = {
                         ]
                     },
                 ],
-                hasFooter: false,
-                subMenuFooter: {
+                hasFooter: true,
+                menuFooter: {
                     key: "sHSMF_",
-                    label: "",
+                    label: "StartNav",
                     siteNavItemList: [
                         {
                             key: "sHSMFIL_",
@@ -142,8 +142,11 @@ const siteHeaderConfig = {
             siteHeaderMenuSection: {
                 key: "sHMS_", 
                 hasSubMenu: false,
+                menuBody: {
+                    key: "sHSMB_",
+                },
                 hasFooter: true,
-                subMenuFooter: {
+                menuFooter: {
                     key: "sHSMF_",
                     label: "NewsNav",
                     siteNavItemList: [
@@ -191,8 +194,11 @@ const siteHeaderConfig = {
             siteHeaderMenuSection: {
                 key: "sHMS_", 
                 hasSubMenu: false,
+                menuBody: {
+                    key: "sHSMB_",
+                },
                 hasFooter: true,
-                subMenuFooter: {
+                menuFooter: {
                     key: "sHSMF_",
                     label: "VereinNav",
                     siteNavItemList: [
@@ -240,8 +246,11 @@ const siteHeaderConfig = {
             siteHeaderMenuSection: {
                 key: "sHMS_",
                 hasSubMenu: false,
+                menuBody: {
+                    key: "sHSMB_",
+                },
                 hasFooter: true,
-                subMenuFooter: {
+                menuFooter: {
                     key: "sHSMF_",
                     label: "TeamNav",
                     siteNavItemList: [
@@ -289,8 +298,11 @@ const siteHeaderConfig = {
             siteHeaderMenuSection: {
                 key: "sHMS_", 
                 hasSubMenu: false,
+                menuBody: {
+                    key: "sHSMB_",
+                },
                 hasFooter: true,
-                subMenuFooter: {
+                menuFooter: {
                     key: "sHSMF_",
                     label: "CommunityNav",
                     siteNavItemList: [

@@ -5,6 +5,12 @@
     margin: var(--siteMenuFooterMargin);
     padding: calc(var(--siteMenuSpacing) - var(--siteMenuFooterMargin)) calc(var(--siteMenuSpacing) - var(--siteMenuFooterMargin));
 }
+.SiteStartNav__footerLayout {
+    display: inline-grid;
+    grid: auto/repeat(2,1fr);
+    -moz-column-gap: var(--siteMenuSpacing);
+    column-gap: var(--siteMenuSpacing);
+}
 .SiteNewsNav__footerLayout {
     display: inline-grid;
     grid: auto/repeat(2,1fr);
