@@ -10,8 +10,11 @@ import Guides from '../guides/Guides';
 import siteHeaderInit, { handleLinkHover } from '../../../scripts/SiteHeader';
 import SiteHeaderMenuContainer from './SiteHeaderMenuContainer';
 import siteHeaderConfig from './SiteHeaderConfig'
+import useTranslation from '../../../hooks/useTranslation'
 
 export default function Header(props) {
+
+  const translate = useTranslation()
 
   useEffect(() => {
     siteHeaderInit();
@@ -63,7 +66,7 @@ export default function Header(props) {
                 href={`${(siteHeaderConfig?.ctaButton?.link && siteHeaderConfig?.ctaButton?.link) || "/"}`} 
                 className="CtaButton"
               >
-                <span>{(siteHeaderConfig?.ctaButton?.label && siteHeaderConfig?.ctaButton?.label) || "error"}</span>
+                <span data-text-key={(siteHeaderConfig?.ctaButton?.label && siteHeaderConfig?.ctaButton?.label) || "error"}>{translate("hello")}</span>
               </a>
             </nav>
             <SiteHeaderMenuContainer {...siteHeaderConfig}/>

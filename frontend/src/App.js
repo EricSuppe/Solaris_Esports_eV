@@ -13,8 +13,8 @@ const Home = lazy(() => import('./pages/home/Home'));
 const Layout = () => {
   return (
     <div className='CRA__config--root flavor--Primary'>
-      <Outlet/>
-      <Footer/>
+        <Outlet/>
+        <Footer/>
     </div>
   )
 }
@@ -79,6 +79,6 @@ function getPreferedTheme() {
 }
 
 function getPreferedLanguage() {
-  const prefLanguage = "de"
+  const prefLanguage = navigator.language || navigator.userLanguage
   document.querySelector("html").lang = `${prefLanguage}`
 }

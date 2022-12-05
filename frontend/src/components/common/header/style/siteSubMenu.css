@@ -29,6 +29,7 @@
     height: var(--siteSubMenuTriggerBackgroundHeight);
     border-radius: 0px;
     background-color: var(--backgroundColorLayer2);
+    transition: var(--siteSubMenuTriggerTransition);
 }
 .SiteSubMenu__navHoverArrow {
     position: absolute;
