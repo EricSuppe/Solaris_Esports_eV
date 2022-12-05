@@ -1,0 +1,31 @@
+.SiteMenuSection__footer {
+    --siteMenuFooterMargin: 4px;
+    border-radius: 4px;
+    background-color: #f6f9fb;
+    margin: var(--siteMenuFooterMargin);
+    padding: calc(var(--siteMenuSpacing) - var(--siteMenuFooterMargin)) calc(var(--siteMenuSpacing) - var(--siteMenuFooterMargin));
+}
+.SiteNewsNav__footerLayout {
+    display: inline-grid;
+    grid: auto/repeat(2,1fr);
+    -moz-column-gap: var(--siteMenuSpacing);
+    column-gap: var(--siteMenuSpacing);
+}
+.SiteVereinNav__footerLayout {
+    display: inline-grid;
+    grid: auto/repeat(2,1fr);
+    -moz-column-gap: var(--siteMenuSpacing);
+    column-gap: var(--siteMenuSpacing);
+}
+.SiteTeamNav__footerLayout {
+    display: inline-grid;
+    grid: auto/repeat(2,1fr);
+    -moz-column-gap: var(--siteMenuSpacing);
+    column-gap: var(--siteMenuSpacing);
+}
+.SiteCommunityNav__footerLayout {
+    display: inline-grid;
+    grid: auto/repeat(2,1fr);
+    -moz-column-gap: var(--siteMenuSpacing);
+    column-gap: var(--siteMenuSpacing);
+}

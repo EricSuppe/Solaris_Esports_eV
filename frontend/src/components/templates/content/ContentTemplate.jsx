@@ -19,11 +19,11 @@ export default function ContentTemplate(props) {
 }
 
 ContentTemplate.propTypes = {
-    children: propTypes.oneOfType([
-        propTypes.arrayOf(propTypes.element),
-        propTypes.element
-    ]),
-    pageID: propTypes.string.isRequired,
-    label: propTypes.string.isRequired,
-    meta: propTypes.object,
+  children: propTypes.oneOfType([
+      propTypes.arrayOf(propTypes.element),
+      propTypes.element
+  ]),
+  pageID: propTypes.string.isRequired,
+  label: propTypes.string.isRequired,
+  meta: propTypes.object,
 }

@@ -22,9 +22,14 @@ export default function SiteHeaderMenuContainer(props) {
                 >
                     {props?.config && props.config.map((item, index) => {
                         let {key, siteHeaderNavItem, ...passthrough} = item
-                        let dataKey = `${item.key}${item.siteHeaderMenuSection.key}${index}`
+                        let dataKey = `${item.key}${index}`
                         return (
-                            <SiteHeaderMenuSection key={dataKey} {...passthrough}/> 
+                            <SiteHeaderMenuSection 
+                                key={dataKey} 
+                                parentKey={dataKey} 
+                                nodeIndex={index}
+                                {...passthrough}
+                            /> 
                         )  
                     })}       
                 </div>

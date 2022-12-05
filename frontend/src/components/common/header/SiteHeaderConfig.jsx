@@ -93,6 +93,43 @@ const siteHeaderConfig = {
                         ]
                     },
                 ],
+                hasFooter: false,
+                subMenuFooter: {
+                    key: "sHSMF_",
+                    label: "",
+                    siteNavItemList: [
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Twitter",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Discord",
+                                    link: "/discord"
+                                },
+                            ],
+                        },
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Youtube",
+                                    link: "/youtube"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Instagram",
+                                    link: "/instagram"
+                                },
+                            ],
+                        },
+                    ],
+                },
             },
         },
         {
@@ -104,7 +141,44 @@ const siteHeaderConfig = {
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 
-                hasSubMenu: false
+                hasSubMenu: false,
+                hasFooter: true,
+                subMenuFooter: {
+                    key: "sHSMF_",
+                    label: "NewsNav",
+                    siteNavItemList: [
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Twitter",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Discord",
+                                    link: "/discord"
+                                },
+                            ],
+                        },
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Youtube",
+                                    link: "/youtube"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Instagram",
+                                    link: "/instagram"
+                                },
+                            ],
+                        },
+                    ],
+                },
             },
         },
         {
@@ -116,7 +190,44 @@ const siteHeaderConfig = {
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 
-                hasSubMenu: false
+                hasSubMenu: false,
+                hasFooter: true,
+                subMenuFooter: {
+                    key: "sHSMF_",
+                    label: "VereinNav",
+                    siteNavItemList: [
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Twitter",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Discord",
+                                    link: "/discord"
+                                },
+                            ],
+                        },
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Youtube",
+                                    link: "/youtube"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Instagram",
+                                    link: "/instagram"
+                                },
+                            ],
+                        },
+                    ],
+                },
             },
         },
         {
@@ -128,7 +239,44 @@ const siteHeaderConfig = {
             },
             siteHeaderMenuSection: {
                 key: "sHMS_",
-                hasSubMenu: false
+                hasSubMenu: false,
+                hasFooter: true,
+                subMenuFooter: {
+                    key: "sHSMF_",
+                    label: "TeamNav",
+                    siteNavItemList: [
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Twitter",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Discord",
+                                    link: "/discord"
+                                },
+                            ],
+                        },
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Youtube",
+                                    link: "/youtube"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Instagram",
+                                    link: "/instagram"
+                                },
+                            ],
+                        },
+                    ],
+                },  
             },
         },
         {
@@ -140,7 +288,44 @@ const siteHeaderConfig = {
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 
-                hasSubMenu: false
+                hasSubMenu: false,
+                hasFooter: true,
+                subMenuFooter: {
+                    key: "sHSMF_",
+                    label: "CommunityNav",
+                    siteNavItemList: [
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Twitter",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Discord",
+                                    link: "/discord"
+                                },
+                            ],
+                        },
+                        {
+                            key: "sHSMFIL_",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Youtube",
+                                    link: "/youtube"
+                                },
+                                {
+                                    key: "sHSMFI_",
+                                    label: "Instagram",
+                                    link: "/instagram"
+                                },
+                            ],
+                        },
+                    ],
+                }, 
             },
         },
     ] 

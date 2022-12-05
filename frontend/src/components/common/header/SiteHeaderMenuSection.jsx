@@ -6,19 +6,28 @@ export default function SiteHeaderMenuSection(props) {
     return (
         <div
             className={`SiteMenu__section SiteMenu__section--left ${props?.siteHeaderMenuSection.hasSubMenu && "SiteMenu--hasSubMenu"}`}
-            data-js-target="SiteMenuSection"
             aria-hidden={true}
+            data-js-target="SiteMenuSection"
+            data-id={`${props.parentKey}`}
             hidden
         >
             <section className="SiteMenuSection">
                 <div className="SiteMenuSection__body">
                     {props?.siteHeaderMenuSection.hasSubMenu && <SiteHeaderSubMenu {...props}/>}
+                    {!props?.siteHeaderMenuSection.hasSubMenu && <SiteHeaderMenu {...props}/>}
                 </div>
+                {props?.siteHeaderMenuSection.hasFooter && 
+                    <footer className='SiteMenuSection__footer'>
+                        <SiteHeaderMenuFooter parentKey={`${props.siteHeaderMenuSection.subMenuFooter.key}${props.nodeIndex}`} {...props.siteHeaderMenuSection.subMenuFooter}/>
+                    </footer>
+                }
             </section>
         </div>
     )
 }
 SiteHeaderMenuSection.propTypes = {
+    parentKey: propTypes.string.isRequired,
+    nodeIndex: propTypes.number.isRequired,
     siteHeaderMenuSection: propTypes.object,
 }
 
@@ -200,4 +209,106 @@ SiteNavItem.propTypes = {
     imageAlt: propTypes.string,
     label: propTypes.string,
     link: propTypes.string,
+}
+
+function SiteHeaderMenu(props) {
+    return (
+        <div className="SiteMenuSection__body">
+            <div className={`Site${props?.label && props.label}__bodyLayout`}>
+                <header className={`Site${props?.label && props.label}__header`}>
+                    <section className='SiteNavList'>
+                        <ul className='SiteNavList__list'>
+                            <li className='SiteNavItem'>
+                                <a href="" className='SiteNavItem__link'>
+                                    <span className='SiteNavItem__iconContainer'>
+                                        <img src="" alt="" />
+                                    </span>
+                                    <span className='SiteNavItem__labelContainer'>
+                                        <span className='SiteNavItem__label'>
+                                            test
+                                            <img src="" alt="" />
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </header>
+                {/* /*TODO */ }
+            </div>
+        </div>
+    )
+}
+
+
+function SiteHeaderMenuFooter(props) {
+    return (
+        <div 
+            className={`Site${(props?.label && props.label) || ""}__footerLayout`} 
+            data-id={`${props.parentKey}_${props.label}`}
+            key={`${props.parentKey}`}
+        >
+            {props?.siteNavItemList && props.siteNavItemList.map((item, index) => {
+                let {key, ...passthrough} = item
+                let dataKey = `${props.parentKey}${item.key}${index}`
+                return (
+                    <SiteHeaderMenuFooterNavList 
+                        key={dataKey} 
+                        parentKey={dataKey} 
+                        {...passthrough}
+                    />
+                )
+            })}
+        </div>
+    )
+}
+SiteHeaderMenuFooter.propTypes = {
+    parentKey: propTypes.string.isRequired,
+    subMenuFooter: propTypes.object,
+}
+
+function SiteHeaderMenuFooterNavList(props) {
+    return (
+        <section 
+            className="SiteNavList" 
+            data-id={`${props.parentKey}`}
+        >
+            <ul className="SiteNavList__list">
+                {props?.siteNavItem && props.siteNavItem.map((item, index) => {
+                    let {key, ...passthrough} = item
+                    let dataKey = `${item.key}${index}`
+                    return (
+                        <SiteHeaderMenuFooterNavItem 
+                            key={dataKey} 
+                            parentKey={dataKey} 
+                            {...passthrough}
+                        />
+                    )
+                })}
+            </ul>
+        </section>
+    )
+}
+SiteHeaderMenuFooterNavList.propTypes = {
+    parentKey: propTypes.string.isRequired,
+    siteNavItemList: propTypes.arrayOf(propTypes.object),
+}
+
+function SiteHeaderMenuFooterNavItem(props) {
+    return (
+        <li className="SiteNavItem" data-id={`${props.parentKey}`}>
+            <a href={`${(props?.link && props.link) || "/"}`}>
+                <span className='SiteNavItem__iconContainer'>
+                    <img src="" alt={`${(props?.label && props.label) || "error"} icon`} />
+                </span>
+                <span className='SiteNavItem__labelContainer'>
+                    <span className='SiteNavItem__label'>{(props?.label && props.label) || "Error"}</span>
+                </span>
+            </a>
+        </li>
+    )
+}
+SiteHeaderMenuFooterNavItem.propTypes = {
+    parentKey: propTypes.string.isRequired,
+    siteNavItem: propTypes.object,
 }
