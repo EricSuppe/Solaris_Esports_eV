@@ -6,7 +6,7 @@ import SiteHeaderMenu from './SiteHeaderMenu'
 export default function SiteHeaderMenuSection(props) {
     return (
         <div
-            className={`SiteMenu__section SiteMenu__section--left ${props?.siteHeaderMenuSection.hasSubMenu && "SiteMenu--hasSubMenu"}`}
+            className={`SiteMenu__section SiteMenu__section--left ${props?.siteHeaderMenuSection.hasSubMenu && "SiteMenu--hasSubMenu SiteMenuSection--variantNoPadding"}`}
             aria-hidden={true}
             data-js-target="SiteMenuSection"
             data-id={`${props.parentKey}`}

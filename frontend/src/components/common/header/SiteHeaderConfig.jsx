@@ -300,6 +300,71 @@ const siteHeaderConfig = {
                 hasSubMenu: false,
                 menuBody: {
                     key: "sHSMB_",
+                    label: "CommunityNav",
+                    header: {
+                        key: "sHSMBH_",
+                        siteNavItemList: [
+                            {
+                                key: "sHSMBHL_",
+                                siteNavItem: [
+                                    {
+                                        key: "sHSMBHLI_",
+                                        label: "Überschrift",
+                                        link: "/twitter"
+                                    },
+                                ]
+                            },
+                        ]
+                    },
+                    siteNavItemList: [
+                        {
+                            key: "sHSMBHL_",
+                            label: "jetz starten",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMBHLI_",
+                                    label: "gegenstand1",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMBHLI_",
+                                    label: "gegenstand1",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMBHLI_",
+                                    label: "gegenstand1",
+                                    link: "/twitter"
+                                },
+                            ]
+                        },
+                        {
+                            key: "sHSMBHL_",
+                            label: "starten",
+                            siteNavItem: [
+                                {
+                                    key: "sHSMBHLI_",
+                                    label: "gegenstand2",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMBHLI_",
+                                    label: "gegenstand2",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMBHLI_",
+                                    label: "gegenstand2",
+                                    link: "/twitter"
+                                },
+                                {
+                                    key: "sHSMBHLI_",
+                                    label: "gegenstand2",
+                                    link: "/twitter"
+                                },
+                            ]
+                        },
+                    ],
                 },
                 hasFooter: true,
                 menuFooter: {

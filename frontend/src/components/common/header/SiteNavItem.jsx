@@ -18,10 +18,14 @@ export default function SiteNavItem(props) {
                     />
                 </span>
                 <span className="SiteNavItem__labelContainer">
-                    {`${(props?.label && props?.label) || "Error"}`}
+                    <span className="SiteNavItem__label">
+                        {`${(props?.label && props?.label) || "Error"}`}
+                        <img src="" alt="" />
+                    </span>
                     <p className="SiteNavItem__body">
                         {`${(props?.description && props.description) || "Error"}`}
                     </p>
+                    &nbsp;
                 </span>
             </a>
         </li>

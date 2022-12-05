@@ -48,9 +48,11 @@ html {
     --guideSolidColor: rgba(97, 97, 97, 0.137);
     --guideDashedColor: rgba(97, 97, 97, 0.255);
     --backgroundColor: #121212;
-    --backgroundColorLayer1: #3d3939;
-    --backgroundColorLayer2: #6d6464;
+    --backgroundColorLayer1: #121212;
+    --backgroundColorLayer2: #292929;
+    --backgroundColorLayer3: #6d6464;
     --navColor: #d8d8d8;
+    --navTextColor: rgb(231, 215, 215);
     --navHoverColor: var(--accentColor);
     --navHoverOpacity: .6;
 }

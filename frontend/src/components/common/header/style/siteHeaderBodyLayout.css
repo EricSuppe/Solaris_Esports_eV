@@ -1,0 +1,8 @@
+.SiteCommunityNav__bodyLayout {
+    display: inline-grid;
+    grid: auto/repeat(2,1fr);
+    gap: var(--siteMenuSpacing) var(--siteMenuSpacing);
+}
+.SiteCommunityNav__header {
+    grid-area: auto/span 2;
+}

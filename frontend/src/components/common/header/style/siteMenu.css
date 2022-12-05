@@ -108,6 +108,9 @@
     --siteMenuSpacing: 24px;
     position: relative;
 }
+.SiteMenuSection--variantNoPadding .SiteMenuSection__body {
+    padding: 0;
+}
 @media (min-width: 900px) {
     .SiteMenuSection {
         display: inline-block;
@@ -115,5 +118,5 @@
     }
 }
 .SiteMenuSection__body {
-    padding: 0;
-}
+    padding: var(--siteMenuSectionBodyPadding,var(--siteMenuSpacing) var(--siteMenuSpacing) calc(var(--siteMenuSpacing) - 8px));
+  }

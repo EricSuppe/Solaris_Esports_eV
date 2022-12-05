@@ -6,7 +6,8 @@ let siteHeaderSubMenu;
 let siteHeaderSubNavItem;
 let siteHeaderSubMenuSection;
 
-let initialMenuheight = 484;
+let initialMenuHeight = 100;
+let initialMenuWidth = 100;
 let initalArrowOffset = 0;
 let initialSubMenuTriggerOffsetY = 0;
 let initialSubMenuTriggerOffsetYCenter = 48;
@@ -22,7 +23,7 @@ function siteHeaderInit() {
     siteHeaderSubNavItem = document.querySelectorAll('[data-js-target="SiteSubNavItem"]');
     siteHeaderSubMenuSection = document.querySelectorAll('[data-js-target="SiteSubMenuSection"]')
 
-    setSiteMenuProps(initialMenuheight);
+    setSiteMenuProps(initialMenuHeight, initialMenuWidth);
     setArrowProps(initalArrowOffset);
     setSubMenuProps({
         triggerOffsetY: initialSubMenuTriggerOffsetY, 
@@ -35,7 +36,7 @@ export function handleLinkHover(event, element, index) {
     if(event.type === "mouseenter") {
         attrOnMouseEnter(element, index)
         setArrowProps(element.offsetLeft + element.offsetWidth/2 - 630)
-        setSiteMenuProps(siteHeaderMenuSection[index].offsetHeight)
+        setSiteMenuProps(siteHeaderMenuSection[index].offsetHeight, siteHeaderMenuSection[index].offsetWidth)
         siteHeaderMenu.style.pointerEvents = "auto"
         if(event.relatedTarget instanceof HTMLElement && !event.relatedTarget.hasAttribute("aria-haspopup")) {
             siteHeader.classList.add("SiteHeader--dropdownVisible") 
@@ -150,9 +151,9 @@ function attrOnMouseLeave(element, index) {
     siteHeaderMenuSection[index].setAttribute("aria-hidden", true)
 }
 
-function setSiteMenuProps(value) {
+function setSiteMenuProps(height, width) {
     const currentStyle = siteHeaderMenu.style;
-    siteHeaderMenu.style = `--siteMenuHeight: ${value}px; width: 804px; ${currentStyle};`
+    siteHeaderMenu.style = `--siteMenuHeight: ${height}px; width: ${width}px; ${currentStyle};`
 }
 
 function setArrowProps(value) {
@@ -171,7 +172,7 @@ function setSubMenuProps(value) {
 function isDescendant(parent, child) {
     var node = child.parentNode;
     while (node != null) {
-        if (node == parent) {
+        if (node === parent) {
             return true;
         }
         node = node.parentNode;

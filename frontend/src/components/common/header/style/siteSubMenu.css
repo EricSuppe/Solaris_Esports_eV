@@ -122,6 +122,11 @@
     padding: 0;
     list-style: none;
 }
+.SiteNavList--iconSizeLarge {
+    --siteNavIconSize: 28px;
+    --siteNavIconSpacingRight: 12px;
+    --siteNavListSpacing: 12px;
+}
 .SiteNavItem {
     --SiteNavItemBodyWhiteSpace: nowrap;
     --SiteNavItemBodyHyphens: none;
@@ -129,9 +134,13 @@
     margin-left: 0;
     letter-spacing: .2px;
 }
+.SiteSubMenu .SiteNavItem {
+    --SiteNavItemBodyWhiteSpace: normal;
+    --SiteNavItemBodyWordBreak: break-word;
+}
 .SiteNavItem__link {
     display: inline-flex;
-    color: #0a2540;
+    color: var(--navTextColor);
     outline: none;
     align-items: start;
 }

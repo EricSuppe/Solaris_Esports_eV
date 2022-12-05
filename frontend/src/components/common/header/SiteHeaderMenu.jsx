@@ -10,8 +10,9 @@ export default function SiteHeaderMenu(props) {
             key={`${props.parentKey}`}
         >
             {props.type === "body" 
-                ? <header className={`Site${props?.label && props.label}__header`}>
-                    {props?.siteNavItemlist && props.siteNavItemList.map((item, index) => {
+            ? <React.Fragment>
+                <header className={`Site${props?.label && props.label}__header`}>
+                    {props?.header?.siteNavItemList && props.header.siteNavItemList.map((item, index) => {
                         let {key, ...passthrough} = item
                         let dataKey = `${props.parentKey}${item.key}${index}_`
                         return (
@@ -23,19 +24,34 @@ export default function SiteHeaderMenu(props) {
                         )
                     })}
                 </header> 
-                : props.type === "footer" 
-                ? props?.siteNavItemList && props.siteNavItemList.map((item, index) => {
+                {props?.siteNavItemList && props.siteNavItemList.map((item, index) => {
                     let {key, ...passthrough} = item
                     let dataKey = `${props.parentKey}${item.key}${index}_`
                     return (
-                        <SiteNavList
-                            key={dataKey} 
-                            parentKey={dataKey} 
-                            {...passthrough}
-                        />
+                        <React.Fragment key={`${dataKey}`}>
+                            <SiteNavList
+                                key={dataKey} 
+                                parentKey={dataKey} 
+                                {...passthrough}
+                            >
+                                <h1 className='SiteNavList__title'>test</h1>
+                            </SiteNavList>
+                        </React.Fragment>
                     )
-                }) : null
-            }
+                })}
+            </React.Fragment>
+            : props.type === "footer" 
+            ? props?.siteNavItemList && props.siteNavItemList.map((item, index) => {
+                let {key, ...passthrough} = item
+                let dataKey = `${props.parentKey}${item.key}${index}_`
+                return (
+                    <SiteNavList
+                        key={dataKey} 
+                        parentKey={dataKey} 
+                        {...passthrough}
+                    />
+                )
+            }) : null}
             {/* /*TODO */ }
         </div>
     )

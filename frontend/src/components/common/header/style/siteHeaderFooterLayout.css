@@ -1,8 +1,8 @@
 .SiteMenuSection__footer {
     --siteMenuFooterMargin: 4px;
     border-radius: 4px;
-    background-color: #f6f9fb;
-    margin: var(--siteMenuFooterMargin);
+    background-color: var(--backgroundColorLayer2);
+    margin: 0 var(--siteMenuFooterMargin) var(--siteMenuFooterMargin) var(--siteMenuFooterMargin);
     padding: calc(var(--siteMenuSpacing) - var(--siteMenuFooterMargin)) calc(var(--siteMenuSpacing) - var(--siteMenuFooterMargin));
 }
 .SiteStartNav__footerLayout {
