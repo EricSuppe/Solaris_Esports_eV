@@ -9,7 +9,8 @@ const siteHeaderConfig = {
             siteHeaderNavItem: {
                 key: "sHNI_", 
                 hasPopup: true, 
-                displayValue: "Startseite"
+                translationKey: "siteHeader.nav.item.home",
+                translationFallback: "Homepage",
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 
@@ -72,6 +73,19 @@ const siteHeaderConfig = {
                                 },
                             ]
                         },
+                        {
+                            key: "sHSMNIL_", 
+                            siteNavItem: [
+                                {
+                                    key: "sHSMNI_", 
+                                    label: "SLR Solaris Esports", 
+                                    description: "Unser erstes Main Team", 
+                                    image: "", 
+                                    imageAlt: "logo", 
+                                    link: ""
+                                },
+                            ]
+                        },
                     ]
                     },
                     {
@@ -93,51 +107,70 @@ const siteHeaderConfig = {
                         ]
                     },
                 ],
-                hasFooter: true,
-                menuFooter: {
-                    key: "sHSMF_",
-                    label: "StartNav",
-                    siteNavItemList: [
-                        {
-                            key: "sHSMFIL_",
-                            siteNavItem: [
-                                {
-                                    key: "sHSMFI_",
-                                    label: "Twitter",
-                                    link: "/twitter"
-                                },
-                                {
-                                    key: "sHSMFI_",
-                                    label: "Discord",
-                                    link: "/discord"
-                                },
-                            ],
-                        },
-                        {
-                            key: "sHSMFIL_",
-                            siteNavItem: [
-                                {
-                                    key: "sHSMFI_",
-                                    label: "Youtube",
-                                    link: "/youtube"
-                                },
-                                {
-                                    key: "sHSMFI_",
-                                    label: "Instagram",
-                                    link: "/instagram"
-                                },
-                            ],
-                        },
-                    ],
-                },
+                hasFooter: false,
             },
         },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {
             key: "sHCI_", 
             siteHeaderNavItem: {
                 key: "sHNI_", 
                 hasPopup: true, 
-                displayValue: "News"
+                translationKey: "siteHeader.nav.item.news",
+                translationFallback: "News",
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 
@@ -189,7 +222,8 @@ const siteHeaderConfig = {
             siteHeaderNavItem: {
                 key: "sHNI_", 
                 hasPopup: true, 
-                displayValue: "Verein"
+                translationKey: "siteHeader.nav.item.association",
+                translationFallback: "Association",
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 
@@ -241,7 +275,8 @@ const siteHeaderConfig = {
             siteHeaderNavItem: {
                 key: "sHNI_", 
                 hasPopup: true, 
-                displayValue: "Teams"
+                translationKey: "siteHeader.nav.item.teams",
+                translationFallback: "Teams",
             },
             siteHeaderMenuSection: {
                 key: "sHMS_",
@@ -293,7 +328,8 @@ const siteHeaderConfig = {
             siteHeaderNavItem: {
                 key: "sHNI_", 
                 hasPopup: true, 
-                displayValue: "Community"
+                translationKey: "siteHeader.nav.item.community",
+                translationFallback: "Community",
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 

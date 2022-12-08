@@ -3,7 +3,7 @@
     --siteMenuArrowOffset: 0;
     --siteMenuTransition: 250ms;
     position: relative;
-    background-color: var(--backgroundColor);
+    background-color: transparent;
     z-index: 1000;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -34,17 +34,38 @@
     margin: 0 auto;
     padding: 0;
 }
+.SiteHeader__configContainer,
 .SiteHeader__navContainer {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 32px var(--paddingContentNormal) 12px;
 }
+.SiteHeader__configContainer {
+    padding-top: 12px;
+}
 @media (min-width: 900px) {
+    .SiteHeader__configContainer,
     .SiteHeader__navContainer { 
-        padding: 12px var(--paddingContentNormal);
+        padding: 0 var(--paddingContentNormal);
+    }
+    .SiteHeader__configContainer {
+        padding: 8px var(--paddingContentNormal);
     }
 }
+.SiteHeader__configContainer::after {
+    content: "";
+    position: absolute;
+    max-width: var(--windowWidth);
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    transform: translateX(calc(-1 * ((var(--windowWidth) - var(--layoutWidth))/2)));
+    height: 1px;
+    background: linear-gradient(90deg,var(--guideDashedColor),var(--guideDashedColor) 50%,transparent 0,transparent);
+    background-size: 8px 1px;
+} 
 .SiteHeader__logoLink {
     display: flex;
     outline: none;

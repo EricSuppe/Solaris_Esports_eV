@@ -14,7 +14,6 @@ let initialSubMenuTriggerOffsetYCenter = 48;
 let initialSubMenuTriggerBackgroundHeight = 96;
 
 function siteHeaderInit() {
-    
     siteHeader = document.querySelector('[data-js-target="SiteHeader"]')
     siteHeaderMenu = document.querySelector('[data-js-target="SiteMenu"]')
     siteHeaderMenuSection = document.querySelectorAll('[data-js-target="SiteMenuSection"]')
@@ -32,6 +31,11 @@ function siteHeaderInit() {
     })
 }
 
+/**
+ * @param {*} event 
+ * @param {*} element 
+ * @param {*} index 
+ */
 export function handleLinkHover(event, element, index) {
     if(event.type === "mouseenter") {
         attrOnMouseEnter(element, index)
@@ -55,6 +59,11 @@ export function handleLinkHover(event, element, index) {
     }
 }
 
+/**
+ * @param {*} event 
+ * @param {*} element 
+ * @param {*} index 
+ */
 export function handleSubNavHover(event, element, index) {
     if(event.type === "mouseenter") {
         if(element.getAttribute('data-js-target') === "SiteSubNavItem") {
@@ -89,6 +98,10 @@ export function closeSiteHeaderMenu() {
     })
 }
 
+/**
+ * @param {*} element 
+ * @param {*} index 
+ */
 function attrOnMouseEnter(element, index) {
     element.firstChild.setAttribute("aria-expanded", true);
     for(let i = 0; i < 5; i++) {
@@ -121,6 +134,10 @@ function attrOnMouseEnter(element, index) {
     }
 }
 
+/**
+ * @param {*} element 
+ * @param {*} index 
+ */
 function subMenuOnMouseEnter(element, index) {
     element.setAttribute("aria-expanded", true)
     for(let i = 0; i < siteHeaderSubNavItem.length; i++) {
@@ -144,6 +161,10 @@ function subMenuOnMouseEnter(element, index) {
     siteHeaderSubMenuSection[index].classList.remove("SiteSubMenuSection--before")
 }
 
+/**
+ * @param {*} element 
+ * @param {*} index 
+ */
 function attrOnMouseLeave(element, index) {
     element.firstChild.setAttribute("aria-expanded", false)
     siteHeaderMenu.setAttribute("hidden", "")
@@ -151,15 +172,25 @@ function attrOnMouseLeave(element, index) {
     siteHeaderMenuSection[index].setAttribute("aria-hidden", true)
 }
 
+/**
+ * @param {*} height 
+ * @param {*} width 
+ */
 function setSiteMenuProps(height, width) {
     const currentStyle = siteHeaderMenu.style;
     siteHeaderMenu.style = `--siteMenuHeight: ${height}px; width: ${width}px; ${currentStyle};`
 }
 
+/**
+ * @param {*} value 
+ */
 function setArrowProps(value) {
     siteHeader.style = `--siteMenuArrowOffset: ${value}px`
 }
 
+/**
+ * @param {*} value 
+ */
 function setSubMenuProps(value) {
     siteHeaderSubMenu.style = 
         `--siteSubMenuTriggerOffsetY: ${value.triggerOffsetY}px; 
@@ -167,8 +198,11 @@ function setSubMenuProps(value) {
         --siteSubMenuTriggerBackgroundHeight: ${value.triggerBackgroundHeight}px`
 }
 
-
-
+/**
+ * @param {*} parent 
+ * @param {*} child 
+ * @returns 
+ */
 function isDescendant(parent, child) {
     var node = child.parentNode;
     while (node != null) {

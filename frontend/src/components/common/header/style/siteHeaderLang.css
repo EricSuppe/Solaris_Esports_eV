@@ -1,0 +1,7 @@
+.SiteHeader__languageChanger {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--navSocialColor);
+    padding: 0;
+}
