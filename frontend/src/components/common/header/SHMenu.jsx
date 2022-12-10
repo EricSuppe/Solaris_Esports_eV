@@ -1,8 +1,9 @@
 import React from 'react'
 import propTypes from "prop-types"
-import SiteNavList from './SiteNavList'
+import SHNavList from './SHNavList'
+import "./style/sHMenu.css"
 
-export default function SiteHeaderMenu(props) {
+export default function SHMenu(props) {
     return (
         <div 
             className={`Site${props?.label && props.label}__${props.type}Layout`}
@@ -16,7 +17,7 @@ export default function SiteHeaderMenu(props) {
                         let {key, ...passthrough} = item
                         let dataKey = `${props.parentKey}${item.key}${index}_`
                         return (
-                            <SiteNavList
+                            <SHNavList
                                 key={dataKey} 
                                 parentKey={dataKey} 
                                 {...passthrough}
@@ -29,13 +30,13 @@ export default function SiteHeaderMenu(props) {
                     let dataKey = `${props.parentKey}${item.key}${index}_`
                     return (
                         <React.Fragment key={`${dataKey}`}>
-                            <SiteNavList
+                            <SHNavList
                                 key={dataKey} 
                                 parentKey={dataKey} 
                                 {...passthrough}
                             >
                                 <h1 className='SiteNavList__title'>test</h1>
-                            </SiteNavList>
+                            </SHNavList>
                         </React.Fragment>
                     )
                 })}
@@ -45,7 +46,7 @@ export default function SiteHeaderMenu(props) {
                 let {key, ...passthrough} = item
                 let dataKey = `${props.parentKey}${item.key}${index}_`
                 return (
-                    <SiteNavList
+                    <SHNavList
                         key={dataKey} 
                         parentKey={dataKey} 
                         {...passthrough}
@@ -56,7 +57,7 @@ export default function SiteHeaderMenu(props) {
         </div>
     )
 }
-SiteHeaderMenu.propTypes = {
+SHMenu.propTypes = {
     parentKey: propTypes.string.isRequired,
     type: propTypes.string.isRequired,
     label: propTypes.string,

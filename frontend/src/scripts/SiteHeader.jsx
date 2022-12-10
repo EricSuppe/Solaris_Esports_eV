@@ -5,6 +5,7 @@ let siteHeaderDroppdownTriggers
 let siteHeaderSubMenu;
 let siteHeaderSubNavItem;
 let siteHeaderSubMenuSection;
+let siteHeaderSubMenuNewsItem
 
 let initialMenuHeight = 100;
 let initialMenuWidth = 100;
@@ -21,7 +22,9 @@ function siteHeaderInit() {
     siteHeaderSubMenu = document.querySelector('[data-js-target="SiteHeaderSubMenu"]');
     siteHeaderSubNavItem = document.querySelectorAll('[data-js-target="SiteSubNavItem"]');
     siteHeaderSubMenuSection = document.querySelectorAll('[data-js-target="SiteSubMenuSection"]')
-
+    siteHeaderSubMenuNewsItem = document.querySelectorAll('[data-js-target="SiteHeaderSubMenuNewsItem"]')
+    
+    initFirst()
     setSiteMenuProps(initialMenuHeight, initialMenuWidth);
     setArrowProps(initalArrowOffset);
     setSubMenuProps({
@@ -29,6 +32,12 @@ function siteHeaderInit() {
         triggerOffsetYCenter: initialSubMenuTriggerOffsetYCenter,
         triggerBackgroundHeight: siteHeaderSubNavItem[0].offsetHeight || initialSubMenuTriggerBackgroundHeight,
     })
+}
+
+function initFirst() {
+    siteHeaderSubMenuSection[0].setAttribute("aria-hidden", false)
+    siteHeaderSubMenuSection[0].removeAttribute("hidden")
+    siteHeaderSubNavItem[0].setAttribute("aria-expanded", true)
 }
 
 /**
@@ -44,6 +53,12 @@ export function handleLinkHover(event, element, index) {
         siteHeaderMenu.style.pointerEvents = "auto"
         if(event.relatedTarget instanceof HTMLElement && !event.relatedTarget.hasAttribute("aria-haspopup")) {
             siteHeader.classList.add("SiteHeader--dropdownVisible") 
+        }
+        if(index === 0) {
+            fadeIn()
+            for(let i = 0; i < siteHeaderSubMenuNewsItem.length; i++) {
+                siteHeaderSubMenuNewsItem[i].setAttribute("data-performed-transition", true)
+            }
         }
     } 
     if(event.type === "mouseleave") {
@@ -212,6 +227,12 @@ function isDescendant(parent, child) {
         node = node.parentNode;
     }
     return false;
+}
+
+function fadeIn() {
+    for(let i = 0; i < siteHeaderSubMenuNewsItem.length; i++) {
+        siteHeaderSubMenuNewsItem[i].classList.add("SiteHeaderSubMenuNewsItem--fadeIn")
+    }
 }
 
 export default siteHeaderInit

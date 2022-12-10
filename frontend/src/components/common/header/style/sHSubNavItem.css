@@ -1,0 +1,43 @@
+.SiteSubNavItem {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    cursor: default;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.SiteSubNavItem__iconContainer {
+    height: 60px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.SiteSubNavItem__icon {
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.SiteSubNavItem__labelContainer {
+    height: max-content;
+    padding: 0;
+}
+.SiteSubNavItem__label {
+    color: var(--navColor);
+    letter-spacing: .2px;
+}
+.SiteSubNavItem__body {
+    color: var(--navTextColor);
+    letter-spacing: .2px;
+}

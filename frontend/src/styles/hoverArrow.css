@@ -9,7 +9,17 @@
     margin-left: var(--arrowSpacing);
     stroke-width: 2px;
     fill: none;
-    stroke: currentColor
+    stroke: var(--accentColor);
+    transition-property: stroke;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: .5s;
+    will-change: stroke;
+}
+a:hover .HoverArrow {
+    stroke: var(--accentColor)
+}
+button:hover .HoverArrow {
+    stroke: var(--accentColor);
 }
 .HoverArrow__linePath {
     opacity: var(--arrowLineOpacity);

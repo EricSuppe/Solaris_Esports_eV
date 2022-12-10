@@ -1,0 +1,37 @@
+.SiteMenu__section {
+    --siteMenuSectionOffset: 0;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateX(var(--siteMenuSectionOffset));
+    transition: var(--siteMenuTransition);
+    transition-property: transform,opacity;
+    will-change: transform,opacity;
+}
+.SiteMenu__section[hidden].SiteMenu__section--left {
+    --siteMenuSectionOffset: -150px;
+}
+.SiteMenu__section[hidden].SiteMenu__section--right {
+    --siteMenuSectionOffset: 150px;
+}
+.SiteMenu__section[hidden] {
+    opacity: 0;
+    pointer-events: none;
+}
+.SiteMenuSection {
+    --siteMenuSpacing: 24px;
+    position: relative;
+}
+.SiteMenuSection--variantNoPadding .SiteMenuSection__body {
+    padding: 0;
+}
+@media (min-width: 900px) {
+    .SiteMenuSection {
+        display: inline-block;
+        --siteMenuSpacing: 32px;
+    }
+}
+.SiteMenuSection__body {
+    padding: var(--siteMenuSectionBodyPadding,var(--siteMenuSpacing) var(--siteMenuSpacing) calc(var(--siteMenuSpacing) - 8px));
+}

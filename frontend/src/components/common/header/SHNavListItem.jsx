@@ -1,7 +1,8 @@
 import React from 'react'
 import propTypes from "prop-types"
+import "./style/sHNavListItem.css"
 
-export default function SiteNavItem(props) {
+export default function SHNavListItem(props) {
     return (
         <li 
             className="SiteNavItem" 
@@ -31,7 +32,7 @@ export default function SiteNavItem(props) {
         </li>
     )
 }
-SiteNavItem.propTypes = {
+SHNavListItem.propTypes = {
     parentKey: propTypes.string.isRequired,
     description: propTypes.string,
     image: propTypes.string,

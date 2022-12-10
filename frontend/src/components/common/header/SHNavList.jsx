@@ -1,8 +1,9 @@
 import React from 'react'
 import propTypes from "prop-types"
-import SiteNavItem from './SiteNavItem'
+import SHNavListItem from './SHNavListItem'
+import "./style/sHNavList.css"
 
-export default function SiteNavList(props) {
+export default function SHNavList(props) {
     return (
         <section className="SiteNavList SiteNavList--iconSizeLarge" data-id={`${props.parentKey}`}>
             {props?.children && props.children}
@@ -11,7 +12,7 @@ export default function SiteNavList(props) {
                     let {key, ...passthrough} = item
                     let dataKey = `${props.parentKey}_${item.key}${index}`
                     return (
-                        <SiteNavItem 
+                        <SHNavListItem 
                             key={dataKey} 
                             parentKey={dataKey}
                             {...passthrough} 
@@ -22,7 +23,7 @@ export default function SiteNavList(props) {
         </section>
     )
 }
-SiteNavList.propTypes = {
+SHNavList.propTypes = {
     parentKey: propTypes.string.isRequired,
     siteNavItem: propTypes.oneOfType([
         propTypes.arrayOf(propTypes.object),

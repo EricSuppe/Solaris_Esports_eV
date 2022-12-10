@@ -1,0 +1,51 @@
+.SiteHeaderSubMenuComponent {
+    --siteComponentPadding: 48px;
+    --siteComponentHeaderLabelHeight: 14px;
+    --siteComponentColor: var(--navTextColor);
+    --siteComponentBackgroundColor: ;
+    --siteComponentBodyItemCount: 2;
+    position: relative;
+    display: inline-grid;
+}
+@media (min-width: 1000px) {
+    .SiteHeaderSubMenuComponent {
+        --siteComponentBodyItemCount: 3;
+    }
+}
+.SiteHeaderComponent__container {
+    position: relative;
+    color: var(--siteComponentColor);
+    padding: 0 var(--siteComponentPadding);
+}
+.SiteHeaderComponent__header {
+    display: inline;
+    line-height: var(--siteComponentHeaderLabelHeight);
+}
+.SiteHeaderComponent__headerList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.SiteHeaderComponentLink {
+    border: none;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+}
+.SiteHeaderComponent__body {
+    --siteComponentBodyItemGap: calc((var(--layoutWidth) - var(--siteSubMenuNavWidth))/30);
+    --siteComponentBodyPadding: 20px;
+
+}
+.SiteHeaderComponent__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid: auto / repeat(var(--siteComponentBodyItemCount), 1fr);
+    gap: var(--siteComponentBodyItemGap);
+    padding: var(--siteComponentBodyPadding) 0;
+}

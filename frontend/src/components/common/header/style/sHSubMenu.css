@@ -1,0 +1,47 @@
+.SiteSubMenu {
+    --siteSubMenuBackgroundColor: var(--siteMenuBackgroundColor);
+    --siteSubMenuTriggerOffsetY: 0px;
+    --siteSubMenuTriggerOffsetYCenter: 42px;
+    --siteSubMenuTriggerBackgroundHeight: 84px;
+    --siteSubMenuTriggerTransition: transform 150ms linear,height 150ms;
+    --siteSubMenuNavWidth: 264px;
+    --siteSubMenuSectionListWidth: calc(var(--layoutWidth) - var(--siteSubMenuNavWidth) - 12px);
+    --siteSubMenuNavGap: 4px;
+    --siteSubMenuSectionListBackgroundRadius: 4px;
+    --siteNavIconLabelLineHeight: 24px;
+    --siteNavIconBodyLineHeight: 16px;
+    display: inline-grid;
+    gap: var(--siteSubMenuNavGap);
+    grid: auto/var(--siteSubMenuNavWidth) var(--siteSubMenuSectionListWidth);
+    padding: 1px 4px 4px 4px;
+    border-radius: 0;
+    background-color: var(--siteSubMenuBackgroundColor);
+    max-width: var(--layoutWidth);
+}
+.SiteSubMenu__nav {
+    position: relative;
+}
+.SiteSubMenu__navHoverBackground {
+    position: absolute;
+    transform: translateY(var(--siteSubMenuTriggerOffsetY));
+    will-change: transform,height;
+    z-index: 1;
+    width: 100%;
+    height: var(--siteSubMenuTriggerBackgroundHeight);
+    border-radius: 0px;
+    background-color: var(--backgroundColorLayer2);
+    transition: var(--siteSubMenuTriggerTransition);
+}
+.SiteSubMenu__navHoverArrow {
+    position: absolute;
+    right: -12px;
+    z-index: 1;
+    margin-top: -14px;
+    top: 50%;
+}
+.SiteSubMenu__sectionList {
+    display: flex;
+    background-color: var(--backgroundColorLayer2);
+    border-radius: var(--siteSubMenuSectionListBackgroundRadius);
+    overflow: hidden;
+}

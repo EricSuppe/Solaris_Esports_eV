@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element: (
           <React.Fragment>
             <ErrorBoundary>
-              <SiteHeader hasGuides={false} variant={""}/>
+              <SiteHeader hasGuides={true} variant={""}/>
               <Suspense fallback={<CircularProgress />}>
                 <Home />
               </Suspense>

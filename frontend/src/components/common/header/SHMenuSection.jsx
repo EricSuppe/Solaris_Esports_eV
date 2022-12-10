@@ -1,9 +1,10 @@
 import React from 'react'
 import propTypes from "prop-types"
-import SiteHeaderSubMenu from './SiteHeaderSubMenu'
-import SiteHeaderMenu from './SiteHeaderMenu'
+import SHSubMenu from './SHSubMenu'
+import SHMenu from './SHMenu'
+import "./style/SHMenuSection.css"
 
-export default function SiteHeaderMenuSection(props) {
+export default function SHMenuSection(props) {
     return (
         <div
             className={`SiteMenu__section SiteMenu__section--left ${props?.siteHeaderMenuSection.hasSubMenu && "SiteMenu--hasSubMenu SiteMenuSection--variantNoPadding"}`}
@@ -14,9 +15,9 @@ export default function SiteHeaderMenuSection(props) {
         >
             <section className="SiteMenuSection">
                 <div className="SiteMenuSection__body">
-                    {props?.siteHeaderMenuSection.hasSubMenu && <SiteHeaderSubMenu {...props}/>}
+                    {props?.siteHeaderMenuSection.hasSubMenu && <SHSubMenu {...props}/>}
                     {!props?.siteHeaderMenuSection.hasSubMenu && 
-                        <SiteHeaderMenu 
+                        <SHMenu 
                             type={"body"}
                             key={`${props.siteHeaderMenuSection.menuBody.key}${props.nodeIndex}`} 
                             parentKey={`${props.siteHeaderMenuSection.menuBody.key}${props.nodeIndex}`} 
@@ -26,7 +27,7 @@ export default function SiteHeaderMenuSection(props) {
                 </div>
                 {props?.siteHeaderMenuSection.hasFooter && 
                     <footer className='SiteMenuSection__footer'>
-                        <SiteHeaderMenu 
+                        <SHMenu 
                             type={"footer"} 
                             key={`${props.siteHeaderMenuSection.menuFooter.key}${props.nodeIndex}`}
                             parentKey={`${props.siteHeaderMenuSection.menuFooter.key}${props.nodeIndex}`} 
@@ -38,7 +39,7 @@ export default function SiteHeaderMenuSection(props) {
         </div>
     )
 }
-SiteHeaderMenuSection.propTypes = {
+SHMenuSection.propTypes = {
     parentKey: propTypes.string.isRequired,
     nodeIndex: propTypes.number.isRequired,
     siteHeaderMenuSection: propTypes.object,

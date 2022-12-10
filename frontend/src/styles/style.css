@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
     font-family: "ClashDisplay-Medium";
+    background-color: #0E1013;
 }
 
 .CRA__config--root *, 

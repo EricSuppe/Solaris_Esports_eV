@@ -1,3 +1,5 @@
+import siteHeaderSubMenuNews from "./components/news/SiteHeaderSubMenuNews"
+
 const siteHeaderConfig = {
     ctaButton: {
         label: "Mitglied werden",
@@ -10,7 +12,7 @@ const siteHeaderConfig = {
                 key: "sHNI_", 
                 hasPopup: true, 
                 translationKey: "siteHeader.nav.item.home",
-                translationFallback: "Homepage",
+                translationFallback: "Abteilungen",
             },
             siteHeaderMenuSection: {
                 key: "sHMS_", 
@@ -18,95 +20,44 @@ const siteHeaderConfig = {
                 subMenuNavItem: [
                     {
                         key: "sHSMNI_", 
-                        label: "League Of Legends", 
-                        description: "unsere League Of Legends Teams ein einem Blick"
+                        label: {
+                            translationKey: "siteHeader.menu.nav.item.teams.label",
+                            translationFallback: "", 
+                        },
+                        description: {
+                            translationKey: "siteHeader.menu.nav.item.teams.description",
+                            translationFallback: "", 
+                        }
                     },
                     {
                         key: "sHSMNI_", 
-                        label: "Valorant", 
-                        description: "unsere Valorant Teams ein einem Blick"
+                        label: {
+                            translationKey: "siteHeader.menu.nav.item.esport.label",
+                            translationFallback: "", 
+                        },
+                        description: {
+                            translationKey: "siteHeader.menu.nav.item.esport.description",
+                            translationFallback: "", 
+                        }
                     },
                 ],
-                subMenuSection: [
-                    {
-                    key: "sHSMS_", 
-                    siteNavItemList: [
-                        {
-                            key: "sHSMNIL_", 
-                            siteNavItem: [
-                                {
-                                    key: "sHSMNI_", 
-                                    label: "SLR Solaris Esports", 
-                                    description: "Unser erstes Main Team", 
-                                    image: "", 
-                                    imageAlt: "logo", 
-                                    link: ""
-                                },
-                                {
-                                    key: "sHSMNI_", 
-                                    label: "SLR Solaris Esports", 
-                                    description: "Unser erstes Main Team", 
-                                    image: "",
-                                    imageAlt: "logo", 
-                                    link: ""
-                                },
-                                {
-                                    key: "sHSMNI_", 
-                                    label: "SLR Solaris Esports", 
-                                    description: "Unser erstes Main Team", 
-                                    image: "", 
-                                    imageAlt: "logo", 
-                                    link: ""
-                                },
-                            ]
-                        },
-                        {
-                            key: "sHSMNIL_", 
-                            siteNavItem: [
-                                {
-                                    key: "sHSMNI_", 
-                                    label: "SLR Solaris Esports", 
-                                    description: "Unser erstes Main Team", 
-                                    image: "", 
-                                    imageAlt: "logo", 
-                                    link: ""
-                                },
-                            ]
-                        },
-                        {
-                            key: "sHSMNIL_", 
-                            siteNavItem: [
-                                {
-                                    key: "sHSMNI_", 
-                                    label: "SLR Solaris Esports", 
-                                    description: "Unser erstes Main Team", 
-                                    image: "", 
-                                    imageAlt: "logo", 
-                                    link: ""
-                                },
-                            ]
-                        },
-                    ]
-                    },
+                subMenuSection: 
                     {
                         key: "sHSMS_", 
-                        siteNavItemList: [
+                        components: [
                             {
-                                key: "sHSMNIL_", 
-                                siteNavItem: [
-                                    {
-                                        key: "sHSMNI_", 
-                                        label: "SLR Solaris Esports", 
-                                        description: "Unser erstes Main Team", 
-                                        image: "", 
-                                        imageAlt: "logo", 
-                                        link: ""
-                                    },
-                                ]
+                                key: "sHSMC_",
+                                component: "undefined",
+
+                            },
+                            {
+                                key: "sHSMC_",
+                                component: siteHeaderSubMenuNews,
+
                             },
                         ]
                     },
-                ],
+                
                 hasFooter: false,
             },
         },

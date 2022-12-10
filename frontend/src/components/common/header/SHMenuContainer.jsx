@@ -1,9 +1,10 @@
 import React from 'react'
 import { closeSiteHeaderMenu } from '../../../scripts/SiteHeader'
-import SiteHeaderMenuSection from './SiteHeaderMenuSection'
+import SHMenuSection from './SHMenuSection'
 import propTypes from "prop-types"
+import "./style/sHMenuContainer.css"
 
-export default function SiteHeaderMenuContainer(props) {
+export default function SHMenuContainer(props) {
     return (
         <div className="SiteHeader__menuContainer">
             <div 
@@ -24,7 +25,7 @@ export default function SiteHeaderMenuContainer(props) {
                         let {key, siteHeaderNavItem, ...passthrough} = item
                         let dataKey = `${item.key}${index}`
                         return (
-                            <SiteHeaderMenuSection 
+                            <SHMenuSection 
                                 key={dataKey} 
                                 parentKey={dataKey} 
                                 nodeIndex={index}
@@ -37,6 +38,6 @@ export default function SiteHeaderMenuContainer(props) {
         </div>
     )
 }
-SiteHeaderMenuContainer.propTypes = {
+SHMenuContainer.propTypes = {
     siteHeaderConfig: propTypes.object,
 }

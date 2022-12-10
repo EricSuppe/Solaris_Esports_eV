@@ -1,0 +1,19 @@
+.SiteNavList {
+    --siteNavIconSpacingTop: 0;
+    --siteNavIconSpacingRight: 10px;
+    --siteNavListMinWidth: 254px;
+}
+.SiteSubMenu .SiteNavList {
+    --siteNavListMinWidth: 220px;
+}
+.SiteNavList__list {
+    min-width: var(--siteNavListMinWidth);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.SiteNavList--iconSizeLarge {
+    --siteNavIconSize: 28px;
+    --siteNavIconSpacingRight: 12px;
+    --siteNavListSpacing: 12px;
+}

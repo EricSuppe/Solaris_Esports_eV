@@ -14,6 +14,7 @@
     }
 }
 .SiteHeaderSocialsItem {
+    --siteSocialTransitionDuration: 300ms;
     box-sizing: border-box;
 }
 .SiteHeaderSocialsItem__link {
@@ -22,9 +23,22 @@
     outline: none;
     border: none;
     color: var(--navSocialColor);
+    transition-property: color;
+    transition-duration: var(--siteSocialTransitionDuration);
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    will-change: color;
+    font-weight: 600;
+}
+@media (prefers-reduced-motion: reduce) {
+    .SiteHeaderSocialsItem__link {
+        --siteSocialTransitionDuration: 1ms;
+    }
+}
+.SiteHeaderSocialsItem__link:hover {
+    color: var(--accentColor);
 }
 .SiteHeaderSocialsItem__icon {
-    color: var(--navSocialColor);
+    color: var(--navSocialIconColor);
     font-size: var(--iconSize);
 }
 .SiteHeaderSocialsItem__label {
