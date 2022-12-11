@@ -1,29 +1,16 @@
 import React, { useEffect } from 'react'
-import Logo from "../../../assets/svg/Logo.svg"
-import profile from "../../../assets/meliodas.jpg"
 import "./style/siteHeader.css"
 import "./style/siteHeaderSocials.css"
 import "./style/siteHeaderLang.css"
 import propTypes from "prop-types"
 import Guides from '../guides/Guides';
-import siteHeaderInit, { handleLinkHover } from '../../../scripts/SiteHeader';
-import SHMenuContainer from './SHMenuContainer';
+import siteHeaderInit from '../../../scripts/SiteHeader';
 import siteHeaderConfig from './SiteHeaderConfig'
-import useTranslation from '../../../hooks/useTranslation'
-import { Link } from 'react-router-dom'
-import HoverArrow from '../arrow/HoverArrow'
+import SHConfigContainer from './SHConfigContainer'
+import SHMiddleContainer from './SHMiddleContainer'
+import SHNavContainer from './SHNavContainer'
 
 export default function Header(props) {
-
-  const translate = useTranslation()
-
-  const socials = [
-    {type: "logo", name: "twitter", font: "bx bxl-twitter", link: "", displayValue: "Twitter"},
-    {type: "logo", name: "discord-alt", font: "bx bxl-discord-alt", link: "", displayValue: "Discord"},
-    {type: "logo", name: "youtube", font: "bx bxl-youtube", link: "", displayValue: "Youtube"},
-    {type: "logo", name: "twitch", font: "bx bxl-twitch", link: "", displayValue: "Twitch"},
-    {type: "logo", name: "instagram", font: "bx bxl-instagram", link: "", displayValue: "Instagram"},
-  ]
 
   useEffect(() => {
     siteHeaderInit();
@@ -46,68 +33,9 @@ export default function Header(props) {
           </div>
         )}
         <div className="SiteHeader__container">
-          <div className="SiteHeader__configContainer">
-            <ul className="SiteHeaderSocials__list">
-              {socials && socials.map((item, index) => <li key={`${item}${index}`} className='SiteHeaderSocialsItem'>
-                <Link className='SiteHeaderSocialsItem__link' to={`${item.link}`}>
-                  <i className={`${item.font} SiteHeaderSocialsItem__icon`}></i>
-                  <span className='SiteHeaderSocialsItem__label'>{`${(item?.displayValue && item.displayValue) || "Social"}`}</span>
-                  <HoverArrow/>
-                </Link>
-              </li>)}
-            </ul>
-            <div className="SiteHeader__settingsContainer">
-              <button className="SiteHeader__languageChanger">
-                <span className='SiteHeaderSocialsItem__label' data-translation-key={`language`}>{translate("language","language")}</span>
-                <HoverArrow/>
-              </button>
-            </div>
-          </div>
-          <div className="SiteHeader__middleContainer">
-            <h1 className="SiteHeader__logo">
-              <a href="/" className="SiteHeader__logoLink">
-                <img src={`${Logo}`} alt="solaris logo" />
-              </a>
-            </h1>
-            <div className="SiteHeader__search">
-              <input className='SiteHeader__searchBar' type="text" placeholder='suchen' />
-              <button className='SiteHeader__searchButton'></button>
-            </div>
-            <nav className="SiteHeader__ctaNav">
-              <a 
-                href={`${(siteHeaderConfig?.ctaButton?.link && siteHeaderConfig?.ctaButton?.link) || "/"}`} 
-                className="CtaButton SiteHeader__profileContainer"
-              >
-                <span className='SiteHeader__profileName'>Süppchen</span>
-                <img className='SiteHeader__profilePicture' src={`${profile}`} alt="solaris logo" />
-              </a>
-            </nav>
-          </div>
-          <div className="SiteHeader__navContainer">
-            <nav className="SiteHeaderNav">
-              <ul className="SiteHeaderNav__list">
-                {siteHeaderConfig.config.map((item, index) => (
-                  <li
-                    key={`${item.key}${index}`}
-                    className="SiteHeaderNavItem"
-                    data-js-target="SiteHeaderDroppdownTriggers"
-                    onMouseEnter={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
-                    onMouseLeave={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
-                  >
-                    <button
-                      className={`${item?.siteHeaderNavItem?.hasPopup ? "" : "Link"} SiteHeaderNavItem__link`}
-                      aria-haspopup={(item?.siteHeaderNavItem?.hasPopup && true) || false}
-                      aria-expanded={(item?.siteHeaderNavItem?.hasPopup && "false") || undefined}
-                      data-translation-key={`${item.siteHeaderNavItem.translationKey}`}
-                    >
-                      {translate(item?.siteHeaderNavItem?.translationKey, item?.siteHeaderNavItem?.translationFallback)}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <SHMenuContainer {...siteHeaderConfig}/>
-          </div>
+          <SHConfigContainer/>
+          <SHMiddleContainer siteHeaderConfig={siteHeaderConfig}/>
+          <SHNavContainer siteHeaderConfig={siteHeaderConfig}/>
         </div>
       </header>
     </React.Fragment>

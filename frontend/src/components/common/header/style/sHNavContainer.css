@@ -1,0 +1,57 @@
+.SiteHeader__navContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px var(--paddingContentNormal) 12px;
+}
+@media (min-width: 900px) {
+    .SiteHeader__navContainer { 
+        padding: 0 var(--paddingContentNormal);
+    }
+}
+.SiteHeaderNav {
+    width: 100%;
+}
+.SiteHeaderNav__list {
+    display: var(--desktopNavDisplay, flex);
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.SiteHeaderNavItem__link, 
+.SiteHeaderNavItem__link.Link {
+    --linkColor: var(--navColor);
+    --linkHoverColor: var(--navHoverColor);
+    --linkHoverOpactiy: var(--navHoverOpacity);
+    --linkHoverTransition: var(--siteMenuTransition);
+    display: block;
+    padding: 8px 20px;
+    letter-spacing: .2px;
+    color: var(--linkColor);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: "ClashDisplay-Bold";
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.SiteHeaderNavItem__link.Link[aria-haspopup=true],
+.SiteHeaderNavItem__link[aria-haspopup=true] {
+    cursor: default;
+    transition: var(--linkHoverTransition);
+    transition-property: color, opacity
+}
+.SiteHeaderNavItem__link.Link[aria-expanded=true],
+.SiteHeaderNavItem__link[aria-expanded=true] {
+    color: var(--linkHoverColor);
+    opacity: var(--linkHoverOpacity)
+}
+.SiteHeaderNavItem__link.Link[aria-haspopup="true"] {
+    cursor: default;
+    transition: none;
+    transition-property: color, opacity;
+}

@@ -10,6 +10,8 @@ export const TRANSLATION = [
             {key: 'siteHeader.nav.item.teams', value: 'Teams'},
             {key: 'siteHeader.nav.item.community', value: 'Community'},
 
+            {key: 'siteHeader.account.login', value: 'Anmelden'},
+
             {key: 'siteHeader.menu.nav.item.teams.label', value: 'Unsere Teams'},
             {key: 'siteHeader.menu.nav.item.teams.description', value: 'Alle Informationen zu unseren Teams'},
             {key: 'siteHeader.menu.nav.item.esport.label', value: 'Esport Blog'},
@@ -26,6 +28,8 @@ export const TRANSLATION = [
             {key: 'siteHeader.nav.item.association', value: 'Association'},
             {key: 'siteHeader.nav.item.teams', value: 'Teams'},
             {key: 'siteHeader.nav.item.community', value: 'Community'},
+
+            {key: 'siteHeader.account.login', value: 'login'},
         ]
     },
     

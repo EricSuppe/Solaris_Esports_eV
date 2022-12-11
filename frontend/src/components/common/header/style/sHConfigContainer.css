@@ -1,0 +1,24 @@
+.SiteHeader__configContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+@media (min-width: 900px) {
+    .SiteHeader__configContainer { 
+        padding: 8px var(--paddingContentNormal);
+    }
+}
+.SiteHeader__configContainer::after {
+    content: "";
+    position: absolute;
+    max-width: var(--windowWidth);
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    transform: translateX(calc(-1 * ((var(--windowWidth) - var(--layoutWidth))/2)));
+    height: 1px;
+    background: linear-gradient(90deg,var(--guideDashedColor),var(--guideDashedColor) 50%,transparent 0,transparent);
+    background-size: 8px 1px;
+}

@@ -1,0 +1,80 @@
+.SiteHeader__middleContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px var(--paddingContentNormal);
+}
+.SiteHeader__middleContainer::after {
+    content: "";
+    position: absolute;
+    max-width: var(--windowWidth);
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    transform: translateX(calc(-1 * ((var(--windowWidth) - var(--layoutWidth))/2)));
+    height: 1px;
+    background: linear-gradient(90deg,var(--guideDashedColor),var(--guideDashedColor) 50%,transparent 0,transparent);
+    background-size: 8px 1px;
+}
+.SiteHeader__logoLink {
+    display: flex;
+    outline: none;
+    padding: 4px;
+    margin: -4px;
+    align-items: center;
+    justify-content: center;
+}
+.SiteHeader__search {
+    justify-self: center;   
+}
+.SiteHeader__searchBar {
+    background-color: var(--backgroundColorLayer2);
+    outline: none;
+    border: none;
+    color: var(--textColor);
+    padding: 5px 10px;
+    width: calc(var(--layoutWidth)/3);
+    min-width: 200px;
+    height: 30px;
+}
+.SiteHeader__ctaAccount {
+    display: var(--desktopNavDisplay, initial);
+}
+.SiteHeader__loginContainer {
+    padding: 5px;
+    position: relative;
+    height: 40px;
+}
+.SiteHeader__loginButton {
+    background-color: var(--accentColor);
+    outline: none;
+    border: none;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    height: 100%;
+    cursor: pointer;
+}
+.SiteHeaderLogin__labelContainer {
+    padding: 0 4px;
+}
+.SiteHeaderLogin__label {
+    
+}
+.SiteHeader__profileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.SiteHeader__profileName {
+    color: var(--textColor);
+}
+.SiteHeader__profilePicture {
+    width: 45px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}

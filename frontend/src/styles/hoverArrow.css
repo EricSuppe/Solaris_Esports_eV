@@ -15,11 +15,20 @@
     transition-duration: .5s;
     will-change: stroke;
 }
+.HoverArrow.HoverArrow__variant--Dark {
+    stroke: black;
+}
 a:hover .HoverArrow {
     stroke: var(--accentColor)
 }
+a:hover .HoverArrow.HoverArrow__variant--Dark {
+    stroke: black;
+}
 button:hover .HoverArrow {
     stroke: var(--accentColor);
+}
+button:hover .HoverArrow.HoverArrow__variant--Dark {
+    stroke: black;
 }
 .HoverArrow__linePath {
     opacity: var(--arrowLineOpacity);
