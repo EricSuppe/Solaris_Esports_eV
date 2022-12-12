@@ -4,7 +4,7 @@ import "./button.css"
 
 export default function Button(props) {
     return (
-        <button class={`Button ${props.name}`} role="button" data-button-id={`${props.buttonId}`}>
+        <button className={`Button ${props.name}`} role="button" data-button-id={`${props.buttonId}`}>
             <span className='Button__ground' aria-label='button-content'>
                 {props.children}
             </span>

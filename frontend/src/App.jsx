@@ -1,22 +1,18 @@
 import React, { useContext, useEffect } from 'react';
-import { createBrowserRouter, RouterProvider, Outlet, Link } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "./styles/style.css"
 import "./styles/variables.css"
-import "./styles/ctaButton.css"
 import "./styles/font/clash-display.css"
 import SiteHeader from './components/common/header/SiteHeader';
 import Footer from './components/common/footer/Footer';
 import Home from "./pages/home/Home"
 import { ErrorBoundary } from './components/handlers/ErrorBoundary';
 import { ThemeContext } from './context/ThemeContext';
-import { pageTransition } from './scripts/PageTransition';
-import PageTransition from './components/handlers/PageTransition';
 
 const Layout = () => {
   return (
     <React.Fragment>
       <ErrorBoundary>
-        <PageTransition/>
         <div className='CRA__config--root flavor--Primary'>
           <SiteHeader hasGuides={true} variant={""}/>
           <Outlet/>
@@ -47,7 +43,6 @@ function App() {
     getScrollbarWidth();
     getPreferedTheme(darkMode);
     getPreferedLanguage();
-    // pageTransition();
   },[])
 
   return (
