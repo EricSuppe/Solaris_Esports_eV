@@ -1,49 +1,44 @@
-import React, { lazy, Suspense, useContext, useEffect } from 'react';
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { CircularProgress } from '@mui/material';
+import React, { useContext, useEffect } from 'react';
+import { createBrowserRouter, RouterProvider, Outlet, Link } from "react-router-dom";
 import "./styles/style.css"
 import "./styles/variables.css"
 import "./styles/ctaButton.css"
 import "./styles/font/clash-display.css"
-import "./styles/hoverArrow.css"
 import SiteHeader from './components/common/header/SiteHeader';
 import Footer from './components/common/footer/Footer';
+import Home from "./pages/home/Home"
 import { ErrorBoundary } from './components/handlers/ErrorBoundary';
 import { ThemeContext } from './context/ThemeContext';
-
-const Home = lazy(() => import('./pages/home/Home'));
+import { pageTransition } from './scripts/PageTransition';
+import PageTransition from './components/handlers/PageTransition';
 
 const Layout = () => {
   return (
-    <div className='CRA__config--root flavor--Primary'>
-      <Outlet/>
-      <Footer/>
-    </div>
+    <React.Fragment>
+      <ErrorBoundary>
+        <PageTransition/>
+        <div className='CRA__config--root flavor--Primary'>
+          <SiteHeader hasGuides={true} variant={""}/>
+          <Outlet/>
+          <Footer/>
+        </div>
+      </ErrorBoundary>
+    </React.Fragment>
   )
 }
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Layout/>,
     children: [
       {
         path: "/",
-        element: (
-          <React.Fragment>
-            <ErrorBoundary>
-              <SiteHeader hasGuides={true} variant={""}/>
-              <Suspense fallback={<CircularProgress />}>
-                <Home />
-              </Suspense>
-            </ErrorBoundary>
-          </React.Fragment>
-        ),
+        element: <Home/>,
       },
     ],
   },
 ]);
-
 
 function App() {
   const {darkMode} = useContext(ThemeContext);
@@ -52,13 +47,12 @@ function App() {
     getScrollbarWidth();
     getPreferedTheme(darkMode);
     getPreferedLanguage();
+    // pageTransition();
   },[])
 
   return (
     <React.Fragment>
-      <Suspense fallback={<CircularProgress />}>
-        <RouterProvider router={router}/>
-      </Suspense>
+      <RouterProvider router={router}/>
     </React.Fragment>
   );
 }

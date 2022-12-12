@@ -5,6 +5,7 @@ import profile from "../../../assets/meliodas.jpg"
 import "./style/sHMiddleContainer.css"
 import HoverArrow from '../arrow/HoverArrow'
 import useTranslation from '../../../hooks/useTranslation'
+import Button from '../button/Button'
 
 export default function SHMiddleContainer(props) {
 
@@ -43,17 +44,17 @@ export default function SHMiddleContainer(props) {
                     ? <></> 
                     : <></>) 
                 : <div className='SiteHeader__loginContainer'>
-                    <button className="SiteHeader__loginButton">
+                    <Button name={"SiteHeader__loginButton"} buttonId={"SHLB"}>
                         <div className="SiteHeaderLogin__labelContainer">
                             <span 
                                 className="SiteHeaderLogin__label" 
                                 data-translation-key={"siteHeader.account.login"}
-                            >
+                                >
                                 {translate("siteHeader.account.login","login")}
                             </span>
                         </div>
-                        <HoverArrow variant={"Dark"}/>
-                    </button>
+                        <HoverArrow variant={"Dark"} transfrom={true}/>
+                    </Button>
                 </div>}
                 {/* <a 
                     href={`${(props.siteHeaderConfig?.ctaButton?.link && props.siteHeaderConfig?.ctaButton?.link) || "/"}`} 

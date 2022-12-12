@@ -21,14 +21,16 @@ export default function SHNavContainer(props) {
                     onMouseEnter={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
                     onMouseLeave={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
                   >
-                    <button
+                    <a
                       className={`${item?.siteHeaderNavItem?.hasPopup ? "" : "Link"} SiteHeaderNavItem__link`}
                       aria-haspopup={(item?.siteHeaderNavItem?.hasPopup && true) || false}
                       aria-expanded={(item?.siteHeaderNavItem?.hasPopup && "false") || undefined}
                       data-translation-key={`${item.siteHeaderNavItem.translationKey}`}
+                      data-start-transition={true}
+                      href={index === 0 ?"/" : "/about"}
                     >
                       {translate(item?.siteHeaderNavItem?.translationKey, item?.siteHeaderNavItem?.translationFallback)}
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>

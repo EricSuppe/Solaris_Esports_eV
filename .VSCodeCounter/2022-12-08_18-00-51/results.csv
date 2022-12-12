@@ -1,0 +1,56 @@
+"filename", "language", "JavaScript React", "CSS", "JavaScript", "Markdown", "HTML", "JSON", "XML", "comment", "blank", "total"
+"c:\Users\maste\Solaris_Esports_eV\.VSCodeCounter\2022-12-07_17-36-50\details.md", "Markdown", 0, 0, 0, 52, 0, 0, 0, 0, 6, 58
+"c:\Users\maste\Solaris_Esports_eV\.VSCodeCounter\2022-12-07_17-36-50\diff-details.md", "Markdown", 0, 0, 0, 9, 0, 0, 0, 0, 6, 15
+"c:\Users\maste\Solaris_Esports_eV\.VSCodeCounter\2022-12-07_17-36-50\diff.md", "Markdown", 0, 0, 0, 12, 0, 0, 0, 0, 7, 19
+"c:\Users\maste\Solaris_Esports_eV\.VSCodeCounter\2022-12-07_17-36-50\results.json", "JSON", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\maste\Solaris_Esports_eV\.VSCodeCounter\2022-12-07_17-36-50\results.md", "Markdown", 0, 0, 0, 43, 0, 0, 0, 0, 7, 50
+"c:\Users\maste\Solaris_Esports_eV\frontend\README.md", "Markdown", 0, 0, 0, 38, 0, 0, 0, 0, 33, 71
+"c:\Users\maste\Solaris_Esports_eV\frontend\index.html", "HTML", 0, 0, 0, 0, 22, 0, 0, 0, 1, 23
+"c:\Users\maste\Solaris_Esports_eV\frontend\package-lock.json", "JSON", 0, 0, 0, 0, 0, 31355, 0, 0, 1, 31356
+"c:\Users\maste\Solaris_Esports_eV\frontend\package.json", "JSON", 0, 0, 0, 0, 0, 50, 0, 0, 1, 51
+"c:\Users\maste\Solaris_Esports_eV\frontend\public\index.html", "HTML", 0, 0, 0, 0, 20, 0, 0, 10, 1, 31
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\App.jsx", "JavaScript React", 77, 0, 0, 0, 0, 0, 0, 4, 13, 94
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\assets\svg\Logo.svg", "XML", 0, 0, 0, 0, 0, 0, 15, 0, 1, 16
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\arrow\HoverArrow.jsx", "JavaScript React", 11, 0, 0, 0, 0, 0, 0, 0, 2, 13
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\footer\Footer.jsx", "JavaScript React", 8, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\guides\Guides.jsx", "JavaScript React", 14, 0, 0, 0, 0, 0, 0, 0, 3, 17
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\guides\guides.css", "CSS", 0, 36, 0, 0, 0, 0, 0, 0, 0, 36
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteHeader.jsx", "JavaScript React", 110, 0, 0, 0, 0, 0, 0, 0, 7, 117
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteHeaderConfig.jsx", "JavaScript React", 392, 0, 0, 0, 0, 0, 0, 0, 56, 448
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteHeaderMenu.jsx", "JavaScript React", 53, 0, 0, 0, 0, 0, 0, 13, 1, 67
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteHeaderMenuContainer.jsx", "JavaScript React", 41, 0, 0, 0, 0, 0, 0, 0, 1, 42
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteHeaderMenuSection.jsx", "JavaScript React", 44, 0, 0, 0, 0, 0, 0, 0, 1, 45
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteHeaderSubMenu.jsx", "JavaScript React", 67, 0, 0, 0, 0, 0, 0, 0, 3, 70
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteHeaderSubNavItem.jsx", "JavaScript React", 27, 0, 0, 0, 0, 0, 0, 0, 2, 29
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteNavItem.jsx", "JavaScript React", 40, 0, 0, 0, 0, 0, 0, 0, 1, 41
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteNavList.jsx", "JavaScript React", 34, 0, 0, 0, 0, 0, 0, 0, 2, 36
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\SiteSubMenuSection.jsx", "JavaScript React", 34, 0, 0, 0, 0, 0, 0, 0, 2, 36
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\style\siteHeader.css", "CSS", 0, 118, 0, 0, 0, 0, 0, 1, 0, 119
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\style\siteHeaderBodyLayout.css", "CSS", 0, 8, 0, 0, 0, 0, 0, 0, 0, 8
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\style\siteHeaderFooterLayout.css", "CSS", 0, 37, 0, 0, 0, 0, 0, 0, 0, 37
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\style\siteHeaderLang.css", "CSS", 0, 7, 0, 0, 0, 0, 0, 0, 0, 7
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\style\siteHeaderSocials.css", "CSS", 0, 33, 0, 0, 0, 0, 0, 0, 0, 33
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\style\siteMenu.css", "CSS", 0, 121, 0, 0, 0, 0, 0, 1, 0, 122
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\common\header\style\siteSubMenu.css", "CSS", 0, 173, 0, 0, 0, 0, 0, 0, 0, 173
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\handlers\ErrorBoundary.jsx", "JavaScript React", 16, 0, 0, 0, 0, 0, 0, 0, 4, 20
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\templates\content\ContentTemplate.jsx", "JavaScript React", 27, 0, 0, 0, 0, 0, 0, 0, 2, 29
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\templates\content\contentTemplate.css", "CSS", 0, 4, 0, 0, 0, 0, 0, 0, 0, 4
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\templates\section\SectionTemplate.jsx", "JavaScript React", 34, 0, 0, 0, 0, 0, 0, 0, 3, 37
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\components\templates\section\sectionTemplate.css", "CSS", 0, 54, 0, 0, 0, 0, 0, 1, 2, 57
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\context\ThemeContext.jsx", "JavaScript React", 17, 0, 0, 0, 0, 0, 0, 5, 6, 28
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\context\TranslationContext.jsx", "JavaScript React", 8, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\hooks\useStorage.jsx", "JavaScript React", 26, 0, 0, 0, 0, 0, 0, 17, 7, 50
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\hooks\useTranslation.jsx", "JavaScript React", 21, 0, 0, 0, 0, 0, 0, 6, 4, 31
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\index.jsx", "JavaScript React", 18, 0, 0, 0, 0, 0, 0, 0, 2, 20
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\pages\home\Home.jsx", "JavaScript React", 25, 0, 0, 0, 0, 0, 0, 0, 2, 27
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\scripts\SiteHeader.jsx", "JavaScript React", 166, 0, 0, 0, 0, 0, 0, 37, 15, 218
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\styles\ctaButton.css", "CSS", 0, 21, 0, 0, 0, 0, 0, 0, 0, 21
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\styles\font\clash-display.css", "CSS", 0, 63, 0, 0, 0, 0, 0, 28, 17, 108
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\styles\hoverArrow.css", "CSS", 0, 29, 0, 0, 0, 0, 0, 0, 0, 29
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\styles\style.css", "CSS", 0, 12, 0, 0, 0, 0, 0, 0, 4, 16
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\styles\variables.css", "CSS", 0, 56, 0, 0, 0, 0, 0, 7, 2, 65
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\translations\DE.jsx", "JavaScript React", 6, 0, 0, 0, 0, 0, 0, 0, 0, 6
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\translations\EN.jsx", "JavaScript React", 6, 0, 0, 0, 0, 0, 0, 0, 0, 6
+"c:\Users\maste\Solaris_Esports_eV\frontend\src\translations\Translation.jsx", "JavaScript React", 24, 0, 0, 0, 0, 0, 0, 0, 4, 28
+"c:\Users\maste\Solaris_Esports_eV\frontend\vite.config.js", "JavaScript", 0, 0, 5, 0, 0, 0, 0, 0, 1, 6
+"Total", "-", 1346, 772, 5, 154, 42, 31406, 15, 130, 237, 34107

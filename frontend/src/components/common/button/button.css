@@ -1,0 +1,105 @@
+.Button {
+    --buttonTransitionDuration: .75s;
+    --buttonTransition: clip-path var(--buttonTransitionDuration) cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path var(--buttonTransitionDuration) cubic-bezier(.165, 0.84, 0.44, 1);
+    --buttonAnimationFallIn: opacityFallbackIn 0s step-start forwards;
+    --buttonAnimationFallOut: opacityFallbackOut var(--buttonTransitionDuration) step-end forwards;
+    --buttonBackgroundColor: var(--backgroundColor);
+    --buttonTextColor: var(--accentColor);
+    --buttonOutlineWidth: 2px;
+    cursor: pointer;
+    position: relative;
+}
+.Button:before,
+.Button:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    position: absolute;
+    transform: translateZ(0);
+    transition: var(--buttonTransition);
+    background-color: var(--buttonBackgroundColor);
+}
+.Button:before {
+    animation: var(--buttonAnimationFallOut);
+    clip-path: polygon(
+        calc(-1*var(--buttonOutlineWidth)) 0, 
+        0 0, 
+        -25% 100%, 
+        calc(-1*var(--buttonOutlineWidth)) 100%);
+    transition-delay: calc(0.2*var(--buttonTransitionDuration));
+}
+.Button:after {
+    animation: var(--buttonAnimationFallOut);
+    clip-path: polygon(
+        0 0, 
+        0 0, 
+        -25% 100%, 
+        0 100%);
+    transition-delay: calc(0.4*var(--buttonTransitionDuration));
+}
+.Button:hover:before {
+    animation: var(--buttonAnimationFallIn);
+    clip-path: polygon(
+        0 0, 
+        calc(100% + var(--buttonOutlineWidth)) 0, 
+        calc(100% + var(--buttonOutlineWidth)) 
+        calc(100% + var(--buttonOutlineWidth)), 0 calc(100% + var(--buttonOutlineWidth)));
+}
+.Button:hover:after {
+    animation: var(--buttonAnimationFallIn);
+    clip-path: polygon(
+        var(--buttonOutlineWidth) var(--buttonOutlineWidth), 
+        calc(100% - var(--buttonOutlineWidth)) var(--buttonOutlineWidth), 
+        calc(100% - var(--buttonOutlineWidth)) calc(100% - var(--buttonOutlineWidth)), 
+        var(--buttonOutlineWidth) calc(100% - var(--buttonOutlineWidth)));
+    transition-delay: 0s;
+}
+.Button * {
+    z-index: 1;
+    position: relative;
+}
+.Button__ground {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+}
+.Button__hoverOverlay {
+    animation: var(--buttonAnimationFallOut);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--buttonTextColor);
+    overflow: hidden;
+    clip-path: polygon(
+        0 0, 
+        0 0, 
+        -25% 100%, 
+        calc(-1*var(--buttonOutlineWidth)) 100%);
+    transform: translateZ(0);
+    transition: var(--buttonTransition);
+    z-index: 2;
+    background: transparent;
+    transition-delay: calc(0.4*var(--buttonTransitionDuration));
+}
+
+Button:hover .Button__hoverOverlay {
+    animation: var(--buttonAnimationFallIn);
+    clip-path: polygon(
+        var(--buttonOutlineWidth) var(--buttonOutlineWidth), 
+        calc(100% - var(--buttonOutlineWidth)) var(--buttonOutlineWidth), 
+        calc(100% - var(--buttonOutlineWidth)) calc(100% - var(--buttonOutlineWidth)), 
+        var(--buttonOutlineWidth) calc(100% - var(--buttonOutlineWidth)));
+    transition-delay: 0s;
+}
+
+@media (prefer-reduced-motion: reduce) {
+    .Button::before,
+    .Button:after,
+    .Button__hoverOverlay {
+        transition-duration: 1ms;
+    }
+}

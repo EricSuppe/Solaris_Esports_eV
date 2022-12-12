@@ -4,6 +4,7 @@
     --arrowHoverOffset: translateX(3px);
     --arrowTipTransform: none;
     --arrowLineOpacity: 0;
+    --arrowColorDark: var(--backgroundColor);
     position:relative;
     top: 1px;
     margin-left: var(--arrowSpacing);
@@ -16,19 +17,25 @@
     will-change: stroke;
 }
 .HoverArrow.HoverArrow__variant--Dark {
-    stroke: black;
+    stroke: var(--arrowColorDark);
 }
 a:hover .HoverArrow {
     stroke: var(--accentColor)
 }
 a:hover .HoverArrow.HoverArrow__variant--Dark {
-    stroke: black;
+    stroke: var(--arrowColorDark);
+}
+a .HoverArrow.HoverArrow__variant--Dark.HoverArrow--transfrom {
+    stroke: currentColor;
 }
 button:hover .HoverArrow {
     stroke: var(--accentColor);
 }
 button:hover .HoverArrow.HoverArrow__variant--Dark {
-    stroke: black;
+    stroke: var(--arrowColorDark);
+}
+button .HoverArrow.HoverArrow__variant--Dark.HoverArrow--transfrom {
+    stroke: currentColor;
 }
 .HoverArrow__linePath {
     opacity: var(--arrowLineOpacity);

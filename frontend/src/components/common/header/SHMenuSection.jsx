@@ -2,7 +2,7 @@ import React from 'react'
 import propTypes from "prop-types"
 import SHSubMenu from './SHSubMenu'
 import SHMenu from './SHMenu'
-import "./style/SHMenuSection.css"
+import "./style/sHMenuSection.css"
 
 export default function SHMenuSection(props) {
     return (

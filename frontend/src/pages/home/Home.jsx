@@ -11,15 +11,13 @@ export default function Home() {
         label={"homepage"}
         meta={{ title: "Solaris Esports | irgendnen Text" }}
       >
-        <Suspense fallback={<CircularProgress />}>
-          <SectionTemplate
-            sectionID={"hp_l"}
-            label={"landing"}
-            hasGuides={true}
-          >
-            <h1>Test</h1>
-          </SectionTemplate>
-        </Suspense>
+        <SectionTemplate
+          sectionID={"hp_l"}
+          label={"landing"}
+          hasGuides={true}
+        >
+          <h1>Test</h1>
+        </SectionTemplate>
       </ContentTemplate>
     </React.Fragment>
   );
