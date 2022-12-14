@@ -6,6 +6,11 @@ import "./style/sHMiddleContainer.css"
 import HoverArrow from '../arrow/HoverArrow'
 import useTranslation from '../../../hooks/useTranslation'
 import Button from '../button/Button'
+import "./style/sHSearchBar.css"
+import { handleLinkHover, handleSearchBarClick, handleSearchBarLoseFocus } from '../../../scripts/SiteHeader'
+import { Link } from 'react-router-dom'
+import SHMenuContainer from './SHMenuContainer'
+import "./style/sHNavContainer.css"
 
 export default function SHMiddleContainer(props) {
 
@@ -27,13 +32,61 @@ export default function SHMiddleContainer(props) {
                     />
                 </a>
             </h1>
-            <div className="SiteHeader__search">
-                <input 
-                    className='SiteHeader__searchBar' 
-                    type="text" 
-                    placeholder='suchen'
-                />
-                <button className='SiteHeader__searchButton'></button>
+            <div className="SiteHeader__navContainer">
+                <nav className="SiteHeaderNav">
+                <ul className="SiteHeaderNav__list">
+                    {props.siteHeaderConfig.config.map((item, index) => (
+                    <li
+                        key={`${item.key}${index}`}
+                        className="SiteHeaderNavItem"
+                        data-js-target="SiteHeaderDroppdownTriggers"
+                        onMouseEnter={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
+                        onMouseLeave={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
+                    >
+                        <Link
+                        className={`${item?.siteHeaderNavItem?.hasPopup ? "" : "Link"} SiteHeaderNavItem__link`}
+                        aria-haspopup={(item?.siteHeaderNavItem?.hasPopup && true) || false}
+                        aria-expanded={(item?.siteHeaderNavItem?.hasPopup && "false") || undefined}
+                        data-translation-key={`${item.siteHeaderNavItem.translationKey}`}
+                        data-start-transition={true}
+                        >
+                        {translate(item?.siteHeaderNavItem?.translationKey, item?.siteHeaderNavItem?.translationFallback)}
+                        </Link>
+                    </li>
+                    ))}
+                </ul>
+                </nav>
+            </div>
+            <div 
+                className="SiteHeader__search" 
+                data-js-target="SiteHeaderSearchBar" 
+                onFocus={() => handleSearchBarClick()}
+                onBlur={() => handleSearchBarLoseFocus()}
+                aria-haspopup={true} 
+                aria-expanded={false}
+            >
+                <div className="SiteHeader__searchConatiner">
+                    <input 
+                        className='SiteHeader__searchBar' 
+                        type="text" 
+                        placeholder='suchen'
+                    />
+                    <button className='SiteHeader__searchButton'>
+                        <i className='bx bx-search-alt-2'></i>
+                    </button>
+                    <div 
+                        className="SiteHeader__searchResultContainer" 
+                        data-js-target="SiteHeaderSearchResultContainer"
+                        aria-hidden={true}
+                        hidden
+                    >
+                        <div className="SiteHeader__searchRecent">
+                            test
+                        </div>
+                        <div className="SiteHeader__searchCurrent"></div>
+                    </div>    
+                </div>
+                <SHMenuContainer {...props.siteHeaderConfig}/>
             </div>
             <nav className={`SiteHeader__ctaAccount 
                 ${isLoggedIn ? "SiteHeader__ctaAccoun--loggedOut" : "SiteHeader__ctaAccoun--loggedIn"} 
@@ -56,16 +109,6 @@ export default function SHMiddleContainer(props) {
                         <HoverArrow variant={"Dark"} transfrom={true}/>
                     </Button>
                 </div>}
-                {/* <a 
-                    href={`${(props.siteHeaderConfig?.ctaButton?.link && props.siteHeaderConfig?.ctaButton?.link) || "/"}`} 
-                    className="CtaButton SiteHeader__profileContainer"
-                >
-                    <img 
-                        className='SiteHeader__profilePicture' 
-                        src={`${profile}`} 
-                        alt="solaris logo"
-                    />
-                </a> */}
             </nav>
         </div>
     )

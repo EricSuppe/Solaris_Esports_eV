@@ -1,7 +1,6 @@
 .SiteHeader__middleContainer {
     position: relative;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 5px var(--paddingContentNormal);
 }
@@ -24,19 +23,6 @@
     margin: -4px;
     align-items: center;
     justify-content: center;
-}
-.SiteHeader__search {
-    justify-self: center;   
-}
-.SiteHeader__searchBar {
-    background-color: var(--backgroundColorLayer2);
-    outline: none;
-    border: none;
-    color: var(--textColor);
-    padding: 5px 10px;
-    width: calc(var(--layoutWidth)/3);
-    min-width: 200px;
-    height: 30px;
 }
 .SiteHeader__ctaAccount {
     display: var(--desktopNavDisplay, initial);

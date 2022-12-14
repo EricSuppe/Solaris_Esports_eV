@@ -4,9 +4,11 @@
     --siteMenuTransition: 250ms;
     --siteMenuBackgroundColor: var(--backgroundColorLayer1);
     --siteMenuBackgroundColorSecondary: var(--backgroundColorLayer2);
-    position: relative;
-    background-color: var(--siteMenuBackgroundColor);
+    position: sticky;
+    width: var(--windowWidth);
+    /* background-color: var(--siteMenuBackgroundColor); */
     z-index: 1000;
+    top: 0;
 }
 @media (prefers-reduced-motion: reduce) {
     .SiteHeader {

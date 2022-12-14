@@ -1,3 +1,4 @@
+import {_p as p, _c as c} from "./add.js"
 let siteHeader
 let siteHeaderMenu
 let siteHeaderMenuSection
@@ -5,7 +6,9 @@ let siteHeaderDroppdownTriggers
 let siteHeaderSubMenu;
 let siteHeaderSubNavItem;
 let siteHeaderSubMenuSection;
-let siteHeaderSubMenuNewsItem
+let siteHeaderSubMenuNewsItem;
+let siteHeaderSearchBar;
+let siteHeaderSearchResultContainer;
 
 let initialMenuHeight = 100;
 let initialMenuWidth = 100;
@@ -23,7 +26,9 @@ function siteHeaderInit() {
     siteHeaderSubNavItem = document.querySelectorAll('[data-js-target="SiteSubNavItem"]');
     siteHeaderSubMenuSection = document.querySelectorAll('[data-js-target="SiteSubMenuSection"]')
     siteHeaderSubMenuNewsItem = document.querySelectorAll('[data-js-target="SiteHeaderSubMenuNewsItem"]')
-    
+    siteHeaderSearchBar = document.querySelector('[data-js-target="SiteHeaderSearchBar"]')
+    siteHeaderSearchResultContainer = document.querySelector('[data-js-target="SiteHeaderSearchResultContainer"]')
+
     initFirst()
     setSiteMenuProps(initialMenuHeight, initialMenuWidth);
     setArrowProps(initalArrowOffset);
@@ -52,7 +57,7 @@ export function handleLinkHover(event, element, index) {
         setSiteMenuProps(siteHeaderMenuSection[index].offsetHeight, siteHeaderMenuSection[index].offsetWidth)
         siteHeaderMenu.style.pointerEvents = "auto"
         if(event.relatedTarget instanceof HTMLElement && !event.relatedTarget.hasAttribute("aria-haspopup")) {
-            siteHeader.classList.add("SiteHeader--dropdownVisible") 
+            c(siteHeader,"SiteHeader--dropdownVisible")
         }
         if(index === 0) {
             fadeIn()
@@ -104,10 +109,10 @@ export function closeSiteHeaderMenu() {
             element.firstChild.setAttribute("aria-expanded", false)
         }
     });
-    siteHeaderMenu.setAttribute("hidden", "")
+    siteHeaderMenu.setAttribute("hidden", true)
     siteHeaderMenuSection.forEach(element => {
         if(element.getAttribute("aria-hidden") === "false") {
-            element.setAttribute("hidden", "")
+            element.setAttribute("hidden", true)
             element.setAttribute("aria-hidden", true)
         }
     })
@@ -122,7 +127,7 @@ function attrOnMouseEnter(element, index) {
     for(let i = 0; i < 5; i++) {
         if(i !== index) {
             siteHeaderDroppdownTriggers[i].firstChild.setAttribute("aria-expanded", false);
-            siteHeaderMenuSection[i].setAttribute("hidden", "")
+            siteHeaderMenuSection[i].setAttribute("hidden", true)
             siteHeaderMenuSection[i].setAttribute("aria-hidden", true)
             if(i < index) {
                 siteHeaderMenuSection[i].classList.add("SiteMenu__section--left")
@@ -183,7 +188,7 @@ function subMenuOnMouseEnter(element, index) {
 function attrOnMouseLeave(element, index) {
     element.firstChild.setAttribute("aria-expanded", false)
     siteHeaderMenu.setAttribute("hidden", "")
-    siteHeaderMenuSection[index].setAttribute("hidden", "")
+    siteHeaderMenuSection[index].setAttribute("hidden", true)
     siteHeaderMenuSection[index].setAttribute("aria-hidden", true)
 }
 
@@ -233,6 +238,20 @@ function fadeIn() {
     for(let i = 0; i < siteHeaderSubMenuNewsItem.length; i++) {
         siteHeaderSubMenuNewsItem[i].classList.add("SiteHeaderSubMenuNewsItem--fadeIn")
     }
+}
+
+export function handleSearchBarClick() {
+    siteHeaderSearchBar.style = "--siteHeaderSearchBarWidth: calc(var(--layoutWidth)/3)"
+    siteHeaderSearchBar.setAttribute("aria-expanded", true);
+    siteHeaderSearchResultContainer.setAttribute("aria-hidden", false);
+    siteHeaderSearchResultContainer.removeAttribute("hidden");
+}
+
+export function handleSearchBarLoseFocus() {
+    siteHeaderSearchBar.style = "--siteHeaderSearchBarWidth: calc(var(--layoutWidth)/5)"
+    siteHeaderSearchBar.setAttribute("aria-expanded", false);
+    siteHeaderSearchResultContainer.setAttribute("aria-hidden", true);
+    siteHeaderSearchResultContainer.setAttribute("hidden", true);
 }
 
 export default siteHeaderInit

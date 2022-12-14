@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
-import { CircularProgress } from '@mui/material'
 import ContentTemplate from '../../components/templates/content/ContentTemplate'
 import SectionTemplate from '../../components/templates/section/SectionTemplate'
+import "./home.css"
 
 export default function Home() {
   return (
@@ -16,7 +16,6 @@ export default function Home() {
           label={"landing"}
           hasGuides={true}
         >
-          <h1>Test</h1>
         </SectionTemplate>
       </ContentTemplate>
     </React.Fragment>

@@ -55,3 +55,6 @@
 .Section__layout {
     padding: var(--sectionPaddingTop) 0 var(--sectionPaddingBottom);
 }
+.Section__layoutFull {
+    padding: 0;
+}

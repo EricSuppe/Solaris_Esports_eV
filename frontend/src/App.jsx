@@ -8,13 +8,14 @@ import Footer from './components/common/footer/Footer';
 import Home from "./pages/home/Home"
 import { ErrorBoundary } from './components/handlers/ErrorBoundary';
 import { ThemeContext } from './context/ThemeContext';
+import { init } from './scripts/initialize';
 
 const Layout = () => {
   return (
     <React.Fragment>
       <ErrorBoundary>
         <div className='CRA__config--root flavor--Primary'>
-          <SiteHeader hasGuides={true} variant={""}/>
+          <SiteHeader hasGuides={false} variant={"Standart"}/>
           <Outlet/>
           <Footer/>
         </div>
@@ -40,6 +41,7 @@ function App() {
   const {darkMode} = useContext(ThemeContext);
 
   useEffect(() => {
+    new init()
     getScrollbarWidth();
     getPreferedTheme(darkMode);
     getPreferedLanguage();

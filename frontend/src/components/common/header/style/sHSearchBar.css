@@ -1,0 +1,57 @@
+.SiteHeader__search {
+    --searchBarBackgroundColor: var(--backgroundColorLayer2);
+    --searchTextColor: var(--textColor);
+    background-color: var(--searchBarBackgroundColor);
+    width: var(--siteHeaderSearchBarWidth,calc(var(--layoutWidth)/5));
+    justify-self: center;   
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    transition-property: width;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 1s;
+    will-change: max-width;
+}
+.SiteHeader__searchConatiner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: var(--searchBarBackgroundColor);
+    position: relative;
+}
+.SiteHeader__searchBar {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--searchTextColor);
+    padding: 5px 10px;
+}
+.SiteHeader__searchButton {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--searchTextColor);
+}
+.SiteHeader__searchResultContainer {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    background-color: var(--searchBarBackgroundColor);
+    z-index: 1;
+    transition: 250ms;
+    transform: translateY(0);
+    will-change: opacity,transfrom;
+    opacity: 1;
+}
+.SiteHeader__searchResultContainer[hidden] {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+}
