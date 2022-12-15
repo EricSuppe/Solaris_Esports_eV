@@ -67,9 +67,16 @@
     max-width: var(--cardMaxWidth,none);
     margin-right: calc(var(--cardBleedRight, 0)*-1);
     margin-bottom: calc(var(--cardBleedBottom, 0)*-1);
-    background: var(--backgroundColorLayer1);
+    background: rgba(0, 0, 0, 0.815);
     box-shadow: var(--cardShadowXLarge);
     overflow: hidden;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(59, 59, 59, 0.432);
+}
+.SiteHeader--moved .Card {
+    background: var(--siteMenuBackgroundColor);
+    backdrop-filter: none;
+    border: none; 
 }
 @media (min-width: 600px) {
     /*TODO*/

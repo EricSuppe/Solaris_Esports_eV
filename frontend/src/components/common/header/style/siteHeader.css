@@ -6,9 +6,11 @@
     --siteMenuBackgroundColorSecondary: var(--backgroundColorLayer2);
     position: sticky;
     width: var(--windowWidth);
-    /* background-color: var(--siteMenuBackgroundColor); */
     z-index: 1000;
     top: 0;
+    transition: background;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 5s;
 }
 @media (prefers-reduced-motion: reduce) {
     .SiteHeader {
@@ -31,6 +33,9 @@
     inset: 0;
     width: 100%;
     background: none;
+}
+.SiteHeader.SiteHeader--moved {
+    background: var(--siteMenuBackgroundColor);
 }
 .SiteHeader__container {
     position: relative;

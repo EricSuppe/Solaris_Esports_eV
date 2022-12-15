@@ -1,5 +1,5 @@
 .SiteSubMenu {
-    --siteSubMenuBackgroundColor: var(--siteMenuBackgroundColor);
+    /* --siteSubMenuBackgroundColor: rgba(230, 210, 210, 0.349); */
     --siteSubMenuTriggerOffsetY: 0px;
     --siteSubMenuTriggerOffsetYCenter: 42px;
     --siteSubMenuTriggerBackgroundHeight: 84px;
@@ -41,7 +41,11 @@
 }
 .SiteSubMenu__sectionList {
     display: flex;
-    background-color: var(--backgroundColorLayer2);
+    border-left: 1px solid rgba(58, 57, 57, 0.466);
     border-radius: var(--siteSubMenuSectionListBackgroundRadius);
     overflow: hidden;
+}
+.SiteHeader--moved .SiteSubMenu__sectionList {
+    border: none;
+    background: var(--backgroundColorLayer2);
 }
