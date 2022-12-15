@@ -1,6 +1,5 @@
 import React from 'react'
 import propTypes from "prop-types"
-import { handleSubNavHover } from '../../../scripts/SiteHeader'
 import useTranslation from '../../../hooks/useTranslation'
 import "./style/sHSubNavItem.css"
 
@@ -12,8 +11,6 @@ export default function SHSubNavItem(props) {
             className="SiteSubNavItem"
             data-id={`${props.parentKey}`}
             data-js-target="SiteSubNavItem"
-            onMouseEnter={(event) => handleSubNavHover(event, event.target, props.nodeIndex)}
-            onMouseLeave={(event) => handleSubNavHover(event, event.target, props.nodeIndex)}
         >
             <div className="SiteSubNavItem__iconContainer">
                 {/* <img src="" alt="" className="SiteSubNavItem__icon" /> */}

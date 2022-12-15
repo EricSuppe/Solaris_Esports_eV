@@ -1,6 +1,5 @@
 import React from 'react'
 import useTranslation from '../../../hooks/useTranslation'
-import { handleLinkHover } from '../../../scripts/SiteHeader'
 import SHMenuContainer from './SHMenuContainer'
 import propTypes from "prop-types"
 import "./style/sHNavContainer.css"

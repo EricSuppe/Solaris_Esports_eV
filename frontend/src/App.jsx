@@ -8,7 +8,6 @@ import Footer from './components/common/footer/Footer';
 import Home from "./pages/home/Home"
 import { ErrorBoundary } from './components/handlers/ErrorBoundary';
 import { ThemeContext } from './context/ThemeContext';
-import { init } from './scripts/initialize';
 
 const Layout = () => {
   return (
@@ -41,8 +40,6 @@ function App() {
   const {darkMode} = useContext(ThemeContext);
 
   useEffect(() => {
-    new init()
-    getScrollbarWidth();
     getPreferedTheme(darkMode);
     getPreferedLanguage();
   },[])
@@ -55,21 +52,6 @@ function App() {
 }
 
 export default App;
-
-function getScrollbarWidth() {
-  const outer = document.createElement('div');
-  outer.style.visibility = 'hidden';
-  outer.style.overflow = 'scroll';
-  outer.style.msOverflowStyle = 'scrollbar';
-  document.body.appendChild(outer);
-  
-  const inner = document.createElement('div');
-  outer.appendChild(inner);
-  
-  const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
-  outer.parentNode.removeChild(outer);
-  return document.querySelector("html").style = `--scrollbarWidth: ${scrollbarWidth}px`
-}
 
 function getPreferedTheme(darkMode) {
   return document.querySelector(".CRA__config--root").classList.add(`theme--${darkMode ? "Dark" : "Light"}`)

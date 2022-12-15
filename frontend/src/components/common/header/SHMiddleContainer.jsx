@@ -7,7 +7,6 @@ import HoverArrow from '../arrow/HoverArrow'
 import useTranslation from '../../../hooks/useTranslation'
 import Button from '../button/Button'
 import "./style/sHSearchBar.css"
-import { handleLinkHover, handleSearchBarClick, handleSearchBarLoseFocus } from '../../../scripts/SiteHeader'
 import { Link } from 'react-router-dom'
 import SHMenuContainer from './SHMenuContainer'
 import "./style/sHNavContainer.css"
@@ -40,15 +39,13 @@ export default function SHMiddleContainer(props) {
                         key={`${item.key}${index}`}
                         className="SiteHeaderNavItem"
                         data-js-target="SiteHeaderDroppdownTriggers"
-                        onMouseEnter={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
-                        onMouseLeave={(event) => handleLinkHover(event, document.querySelectorAll('[data-js-target="SiteHeaderDroppdownTriggers"]')[index], index)}
                     >
                         <Link
-                        className={`${item?.siteHeaderNavItem?.hasPopup ? "" : "Link"} SiteHeaderNavItem__link`}
-                        aria-haspopup={(item?.siteHeaderNavItem?.hasPopup && true) || false}
-                        aria-expanded={(item?.siteHeaderNavItem?.hasPopup && "false") || undefined}
-                        data-translation-key={`${item.siteHeaderNavItem.translationKey}`}
-                        data-start-transition={true}
+                            className={`${item?.siteHeaderNavItem?.hasPopup ? "" : "Link"} SiteHeaderNavItem__link`}
+                            aria-haspopup={(item?.siteHeaderNavItem?.hasPopup && true) || false}
+                            aria-expanded={(item?.siteHeaderNavItem?.hasPopup && "false") || undefined}
+                            data-translation-key={`${item.siteHeaderNavItem.translationKey}`}
+                            data-start-transition={true}
                         >
                         {translate(item?.siteHeaderNavItem?.translationKey, item?.siteHeaderNavItem?.translationFallback)}
                         </Link>
@@ -60,8 +57,6 @@ export default function SHMiddleContainer(props) {
             <div 
                 className="SiteHeader__search" 
                 data-js-target="SiteHeaderSearchBar" 
-                onFocus={() => handleSearchBarClick()}
-                onBlur={() => handleSearchBarLoseFocus()}
                 aria-haspopup={true} 
                 aria-expanded={false}
             >

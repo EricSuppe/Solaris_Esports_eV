@@ -1,5 +1,4 @@
 import React from 'react'
-import { closeSiteHeaderMenu } from '../../../scripts/SiteHeader'
 import SHMenuSection from './SHMenuSection'
 import propTypes from "prop-types"
 import "./style/sHMenuContainer.css"
@@ -15,7 +14,6 @@ export default function SHMenuContainer(props) {
                 className="SiteMenu SiteHeader__menu"
                 hidden={true}
                 data-js-target="SiteMenu"
-                onMouseLeave={() => closeSiteHeaderMenu()}
             >
                 <div 
                     className="Card SiteMenu__card"

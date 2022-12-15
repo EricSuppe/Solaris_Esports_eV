@@ -2,19 +2,24 @@ import React from 'react'
 import propTypes from "prop-types"
 import Guides from '../../common/guides/Guides'
 import "./sectionTemplate.css"
-import image from "../../../assets/test.jpg"
 
 export default function SectionTemplate(props) {
     return (
         <React.Fragment>
-            <section className={`Section Section--${props?.hasGuides && "hasGuides"} Section__${props.label}`} data-section-id={`${props.sectionID}`}>
+            <section 
+                className={`
+                    Section Section--${props.hasGuides ? "hasGuides" : null} 
+                    Section__${props.label} 
+                    Section--${props.background ? "hasBackground" : null}
+                `} 
+                data-section-id={`${props.sectionID}`}
+                data-mask-overlay={props.background ? true : false}
+            >
                 <div className="Section__masked">
                     <div className="Section__backgroundMask">
-                        {/* BackgroundImage */}
-                        <img className='image' src={image} alt="" />
-                        <div className="mask"></div>
+                        {props.background ? props.background : null}
                         <div className="Section__background">
-                            {props?.hasGuides && <Guides/>}
+                            {props.hasGuides ? <Guides/> : null}
                         </div>
                     </div>
                     <div className="Section__contentMask">
@@ -31,10 +36,14 @@ export default function SectionTemplate(props) {
 }
 
 SectionTemplate.propTypes = {
+    sectionID: propTypes.string.isRequired,
     children: propTypes.oneOfType([
         propTypes.arrayOf(propTypes.element),
-        propTypes.element
+        propTypes.element,
     ]),
-    sectionID: propTypes.string.isRequired,
     hasGuides: propTypes.bool,
+    background: propTypes.oneOfType([
+        propTypes.arrayOf(propTypes.element),
+        propTypes.element,
+    ]),
 }

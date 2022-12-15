@@ -4,16 +4,16 @@ import "./style/siteHeaderSocials.css"
 import "./style/siteHeaderLang.css"
 import propTypes from "prop-types"
 import Guides from '../guides/Guides';
-import siteHeaderInit from '../../../scripts/SiteHeader';
 import siteHeaderConfig from './SiteHeaderConfig'
 import SHConfigContainer from './SHConfigContainer'
 import SHMiddleContainer from './SHMiddleContainer'
 import SHNavContainer from './SHNavContainer'
+import { sH } from '../../../scripts/SiteHeader'
 
 export default function Header(props) {
 
   useEffect(() => {
-    siteHeaderInit();
+    new sH().__reconnect()
   },[])
   
   return (
@@ -32,7 +32,7 @@ export default function Header(props) {
             </div>
           </div>
         )}
-        <div className="SiteHeader__container">
+        <div className="SiteHeader__container" data-js-target="SiteHeaderLayout">
           <SHConfigContainer/>
           <SHMiddleContainer siteHeaderConfig={siteHeaderConfig}/>
           <SHNavContainer siteHeaderConfig={siteHeaderConfig}/>
