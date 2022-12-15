@@ -1,7 +1,9 @@
 import {_p as p} from "./add.js"
+import { app as App } from "./App.js"
 
-class siteHeaderHandler {
-    constructor() {
+class siteHeaderHandler extends App {
+    constructor(App) {
+        super(App)
         this.siteHeader = document.querySelector('[data-js-target="SiteHeader"]')
         this.siteHeaderMenu = document.querySelector('[data-js-target="SiteMenu"]')
         this.siteHeaderMenuSection = document.querySelectorAll('[data-js-target="SiteMenuSection"]')
@@ -19,11 +21,8 @@ class siteHeaderHandler {
         this.initialSubMenuTriggerOffsetY = 0;
         this.initialSubMenuTriggerOffsetYCenter = 48;
         this.initialSubMenuTriggerBackgroundHeight = 96;
-        this.scrollbarWidth = undefined;
-        this.layoutWidth = undefined;
     }
     __init() {
-        document.querySelector("html").style = `--scrollbarWidth: ${this.getScrollbarWidth()}px`
         p(this.siteHeaderSubMenuSection[0], "aria-hidden", false)
         p(this.siteHeaderSubMenuSection[0], "hidden", null)
         p(this.siteHeaderSubMenuSection[0], "aria-expanded", true)    
@@ -35,17 +34,22 @@ class siteHeaderHandler {
             triggerBackgroundHeight: this.siteHeaderSubNavItem[0].offsetHeight || this.initialSubMenuTriggerBackgroundHeight,
         })
     }
-    __connect() {
-        for(let i = 0; i < this.siteHeaderDroppdownTriggers.length; i++) {
-            this.siteHeaderDroppdownTriggers[i].addEventListener("mouseenter", (e) => {this.sHLinkGainFocus(e, e.target, i)}) 
-            this.siteHeaderDroppdownTriggers[i].addEventListener("mouseleave", (e) => {this.sHLinkLoseFocus(e, e.target, i)}) 
+    async __connect() {
+        try {
+            for(let i = 0; i < this.siteHeaderDroppdownTriggers.length; i++) {
+                this.siteHeaderDroppdownTriggers[i].addEventListener("mouseenter", (e) => {this.sHLinkGainFocus(e, e.target, i)}) 
+                this.siteHeaderDroppdownTriggers[i].addEventListener("mouseleave", (e) => {this.sHLinkLoseFocus(e, e.target, i)}) 
+            }
+            for(let i = 0; i < this.siteHeaderSubNavItem.length; i++) {
+                this.siteHeaderSubNavItem[i].addEventListener("mouseenter", (e) => {this.sHSubNavGainFocus(e.target, i)})
+            }
+            this.siteHeaderMenu.addEventListener("mouseleave", () => {this.sHExit()})
+            this.siteHeaderSearchBar.addEventListener("focus", () => {this.sHSearchBarGainFocus()})
+            this.siteHeaderSearchBar.addEventListener("blur", () => {this.sHSearchBarLoseFocus()})
+            this.main.addEventListener("scroll", () => {this.getWindowScrollOffset();this.handleSiteHeaderOnScroll()})
+        } catch (error) {
+            throw error
         }
-        for(let i = 0; i < this.siteHeaderSubNavItem.length; i++) {
-            this.siteHeaderSubNavItem[i].addEventListener("mouseenter", (e) => {this.sHSubNavGainFocus(e.target, i)})
-        }
-        this.siteHeaderMenu.addEventListener("mouseleave", () => {this.sHExit()})
-        this.siteHeaderSearchBar.addEventListener("focus", () => {this.sHSearchBarGainFocus()})
-        this.siteHeaderSearchBar.addEventListener("blur", () => {this.sHSearchBarLoseFocus()})
     }
     __disconnect() {
         for(let i = 0; i < this.siteHeaderDroppdownTriggers.length; i++) {
@@ -58,6 +62,7 @@ class siteHeaderHandler {
         this.siteHeaderMenu.removeEventListener("mouseleave", () => {this.sHExit()})
         this.siteHeaderSearchBar.removeEventListener("focus", () => {this.sHSearchBarGainFocus()})
         this.siteHeaderSearchBar.removeEventListener("blur", () => {this.sHSearchBarLoseFocus()})
+        this.main.removeEventListener("scroll", () => this.getWindowScrollOffset())
     }
     __reconnect() {
         return this.__disconnect(), this.__init(), this.__connect()
@@ -222,30 +227,13 @@ class siteHeaderHandler {
         p(this.siteHeaderSearchResultContainer, "aria-hidden", true)
         p(this.siteHeaderSearchResultContainer, "hidden", true)
     }
-    getScrollbarWidth() {
-        if(this.scrollbarWidth !== undefined) return this.scrollbarWidth
-        const outer = document.createElement('div');
-        outer.style.visibility = 'hidden';
-        outer.style.overflow = 'scroll';
-        outer.style.msOverflowStyle = 'scrollbar';
-        document.body.appendChild(outer);
-
-        const inner = document.createElement('div');
-        outer.appendChild(inner);
-        
-        const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
-        outer.parentNode.removeChild(outer);
-        return this.scrollbarWidth = scrollbarWidth
-    }
-    getLayoutWidth() {
-        if(this.layoutWidth !== undefined) return this.layoutWidth
-        const layoutWidth = window.innerWidth - this.getScrollbarWidth() - 32
-        if(layoutWidth > 1250) {
-            return this.layoutWidth = 1250
-        } return this.layoutWidth = layoutWidth
-    }
     setActiveHoverIndex() {
         //TODO: set active index when hovering menu so mapping insint required
+    }
+    handleSiteHeaderOnScroll() {
+        if(this.isLandingInView()) {
+           return this.siteHeader.classList.remove("SiteHeader--moved")
+        } else return this.siteHeader.classList.add("SiteHeader--moved")
     }
 }
 
