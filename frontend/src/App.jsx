@@ -8,6 +8,7 @@ import Footer from './components/common/footer/Footer';
 import Home from "./pages/home/Home"
 import { ErrorBoundary } from './components/handlers/ErrorBoundary';
 import { ThemeContext } from './context/ThemeContext';
+import { app } from './scripts/App';
 
 const Layout = () => {
   return (
@@ -40,8 +41,8 @@ function App() {
   const {darkMode} = useContext(ThemeContext);
 
   useEffect(() => {
+    new app().__reconnect()
     getPreferedTheme(darkMode);
-    getPreferedLanguage();
   },[])
 
   return (
@@ -57,11 +58,3 @@ function getPreferedTheme(darkMode) {
   return document.querySelector(".CRA__config--root").classList.add(`theme--${darkMode ? "Dark" : "Light"}`)
 }
 
-/**
- * Sets the prefered language.
- * @returns the prefered language
- */
-function getPreferedLanguage() {
-  const prefLanguage = navigator.language || navigator.userLanguage
-  return document.querySelector("html").lang = `${prefLanguage}`
-}
