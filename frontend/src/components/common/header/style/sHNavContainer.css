@@ -3,15 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px var(--paddingContentNormal) 12px;
 }
 @media (min-width: 900px) {
     .SiteHeader__navContainer { 
         padding: 0 var(--paddingContentNormal);
     }
-}
-.SiteHeaderNav {
-    width: 100%;
 }
 .SiteHeaderNav__list {
     display: var(--desktopNavDisplay, flex);
@@ -35,15 +31,19 @@
     background-color: transparent;
     border: none;
     outline: none;
-    font-family: "ClashDisplay-Bold";
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 15px;
     text-transform: uppercase;
 }
 .SiteHeaderNavItem__link.Link[aria-haspopup=true],
 .SiteHeaderNavItem__link[aria-haspopup=true] {
     cursor: default;
     transition: var(--linkHoverTransition);
-    transition-property: color, opacity
+    transition-property: color, opacity;
+    -webkit-transition: var(--linkHoverTransition);
+    -moz-transition: var(--linkHoverTransition);
+    -ms-transition: var(--linkHoverTransition);
+    -o-transition: var(--linkHoverTransition);
 }
 .SiteHeaderNavItem__link.Link[aria-expanded=true],
 .SiteHeaderNavItem__link[aria-expanded=true] {
@@ -54,4 +54,8 @@
     cursor: default;
     transition: none;
     transition-property: color, opacity;
+    -webkit-transition: color, opacity;
+    -moz-transition: color, opacity;
+    -ms-transition: color, opacity;
+    -o-transition: color, opacity;
 }

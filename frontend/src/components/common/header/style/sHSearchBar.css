@@ -1,24 +1,43 @@
 .SiteHeader__search {
     --searchBarBackgroundColor: var(--backgroundColorLayer2);
     --searchTextColor: var(--textColor);
-    background-color: var(--searchBarBackgroundColor);
-    width: var(--siteHeaderSearchBarWidth,calc(var(--layoutWidth)/5));
-    justify-self: center;   
-    height: 40px;
+    width: var(--siteHeaderSearchBarWidth, calc(var(--layoutWidth)/5));
+    justify-self: center;
+    height: 35px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     transition-property: width;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-    transition-duration: 1s;
+    transition-duration: var(--transitionDurationLong);
     will-change: max-width;
 }
 .SiteHeader__searchConatiner {
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: var(--searchBarBackgroundColor);
+    background-color: var(--backdropBackgroundLighter);
+    backdrop-filter: var(--backdrop);
+    border: var(--backdropBorderThin);
     position: relative;
+    transition: width;
+    -webkit-transition: width;
+    -moz-transition: width;
+    -ms-transition: width;
+    -o-transition: width;
+    transition-timing-function:cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    transition-duration: var(--transitionDurationShort);
+    z-index: 2;
+}
+.SiteHeader__search[aria-expanded=true] .SiteHeader__searchConatiner {
+    background-color: var(--backdropBackground);
+}
+.SiteHeader--moved .SiteHeader__search[aria-expanded=true] .SiteHeader__searchConatiner {
+    background-color: var(--searchBarBackgroundColor);
+}
+.SiteHeader--moved .SiteHeader__searchConatiner {
+    background-color: var(--searchBarBackgroundColor);
+    backdrop-filter: none;
 }
 .SiteHeader__searchBar {
     width: 100%;
@@ -26,7 +45,7 @@
     outline: none;
     background: none;
     color: var(--searchTextColor);
-    padding: 5px 10px;
+    padding: var(--paddingContentXSmall) var(--paddingContentSmall);
 }
 .SiteHeader__searchButton {
     position: absolute;
@@ -36,22 +55,81 @@
     aspect-ratio: 1 / 1;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 18px;
     color: var(--searchTextColor);
 }
 .SiteHeader__searchResultContainer {
     position: absolute;
-    width: 100%;
+    width: calc(100% + 2px);
     top: 100%;
-    background-color: var(--searchBarBackgroundColor);
-    z-index: 1;
-    transition: 250ms;
-    transform: translateY(0);
+    left: -1px;
+    background: var(--backdropBackground);
+    backdrop-filter: var(--backdrop);
+    transition: var(--transitionDurationShort);
+    -webkit-transition: var(--transitionDurationShort);
+    -moz-transition: var(--transitionDurationShort);
+    -ms-transition: var(--transitionDurationShort);
+    -o-transition: var(--transitionDurationShort);
     will-change: opacity,transfrom;
     opacity: 1;
+}
+.SiteHeader--moved .SiteHeader__searchResultContainer {
+    background-color: var(--searchBarBackgroundColor);
+    backdrop-filter: none;
 }
 .SiteHeader__searchResultContainer[hidden] {
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-20px);
+}
+.SiteHeader__search[aria-expanded=true] .SiteHeader__searchResultContainer {
+    border: var(--backdropBorderThin);
+    border-top: none;
+}
+.SiteHeader__search[aria-expanded=true] .SiteHeader__searchResultContainer:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--backdropBorderColor);
+}
+.SearchResult {
+    padding: var(--paddingContentXLarge) var(--paddingContentLarge) 0 var(--paddingContentLarge);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    gap: 25px;
+}
+.SearchResult:last-of-type {
+    padding-bottom: var(--paddingContentXLarge);
+}
+.SearchResult__iconContainer {
+    flex: 25%;
+    max-width: 40px;
+    display: flex;
+}
+.SearchResult__icon {
+    margin: 0 auto;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+.SearchResult__body {
+    flex: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.SearchResult__labelContainer {
+    padding: var(--paddingContentXSmall);
+    line-height: 1.5;
+}
+.SerachResult__label {
+    color: rgb(189, 189, 189);
+    font-weight: 400;
+    font-size: 18px;
+}
+.SerachResult__description {
+    color: rgb(112, 112, 112);
+    font-size: 14px;
 }

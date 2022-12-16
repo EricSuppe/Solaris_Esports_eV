@@ -67,11 +67,11 @@
     max-width: var(--cardMaxWidth,none);
     margin-right: calc(var(--cardBleedRight, 0)*-1);
     margin-bottom: calc(var(--cardBleedBottom, 0)*-1);
-    background: rgba(0, 0, 0, 0.815);
+    background: var(--backdropBackground);
+    backdrop-filter: var(--backdrop);
     box-shadow: var(--cardShadowXLarge);
     overflow: hidden;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(59, 59, 59, 0.432);
+    border: var(--backdropBorderThin);
 }
 .SiteHeader--moved .Card {
     background: var(--siteMenuBackgroundColor);

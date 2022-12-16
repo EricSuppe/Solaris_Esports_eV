@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
-    font-family: "ClashDisplay-Medium";
+    font-family: "ClashDisplay-Variable";
+    font-weight: 500;
     background-color: #000000;
 }
 
