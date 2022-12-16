@@ -12,6 +12,7 @@ import SHMenuContainer from './SHMenuContainer'
 import "./style/sHNavContainer.css"
 import { useMemo } from 'react'
 import { gen } from '../../../scripts/gen'
+import { useRef } from 'react'
 
 export default function SHMiddleContainer(props) {
 
@@ -95,21 +96,10 @@ const SiteHeaderSearch = (props) => {
     const [items, setItems] = useState([
         {icon: "", label: "Blog", description: "Esports Blog"},
         {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
-        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
         {icon: "", label: "Über uns", description: "Alles was man über den Solaris Esport eV wissen muss"},
     ])
     const [query, setQuery] = useState("")
+    const inputRef = useRef()
 
     const filteredItems = useMemo(() => {
         if(query === "") return null
@@ -119,7 +109,12 @@ const SiteHeaderSearch = (props) => {
     },[items, query])
 
     function onChange(e) {
-        setQuery(e.target.value)
+        return setQuery(e.target.value)
+    }
+
+    function onClick() {
+        if(inputRef.current.value !== null) return inputRef.current.value = null
+        return null
     }
 
     return (
@@ -137,9 +132,12 @@ const SiteHeaderSearch = (props) => {
                     data-js-target="SiteHeaderSearchBar"
                     value={query}
                     onChange={e => onChange(e)}
+                    ref = {inputRef}
                 />
                 <button className='SiteHeader__searchButton'>
-                    <i className='bx bx-search-alt-2'></i>
+                    {query.length < 1 
+                    ? <i className='bx bx-search-alt-2'></i> 
+                    : <i className='bx bx-x' onClick={() => onClick()}></i>}
                 </button>
                 <div 
                     className="SiteHeader__searchResultContainer SearchBar--hideContent" 
