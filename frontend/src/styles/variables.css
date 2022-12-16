@@ -17,16 +17,32 @@ html {
     --paddingLayoutNormal: var(--paddingLayoutMin);
 
     --paddingContentNone: 0;
+    --paddingContentXSmall: 4px;
     --paddingContentSmall: 8px;
     --paddingContentMedium: 16px;
     --paddingContentLarge: 24px;
+    --paddingContentXLarge: 32px;
     --paddingContentNormal: var(--paddingContentMedium);
     /* gird */
     --gridColumnCount: 2;
 
     --columnWidth: calc(var(--layoutWidth)/var(--gridColumnCount));
 
-    --borderRadius: 4px;
+    --borderRadiusSmall: 4px;
+    --borderRadiusLarge: 8px;
+
+    --transitionDurationShort: 300ms;
+    --transitionDurationMedium: 500ms;
+    --transitionDurationLong: 700ms;
+
+    --backgroundSizeDashed: 8px 1px;
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        --transitionDurationShort: 1ms;
+        --transitionDurationMedium: 1ms;
+        --transitionDurationLong: 1ms;
+    }
 }
 @media (min-width: 900px) {
     html {
@@ -59,28 +75,16 @@ html {
     --navTextColor: rgb(51, 51, 51);
     --navHoverColor: var(--accentColor);
     --navHoverOpacity: .6;
-}
-.theme--Light {
-    --textColor: #c9c9c9;
-    --guideSolidColor: rgba(97, 97, 97, 0.137);
-    --guideDashedColor: rgba(97, 97, 97, 0.255);
-    --backgroundColor: #ffffff;
-    --backgroundColorLayer1: var(--backgroundColor);
-    --backgroundColorLayer2: #f0f3f6;
-    --backgroundColorLayer3: #e0e0e0;
-    --navColor: #000000;
-    --navSocialColor: #2c2c2c5e;
-    --navSocialIconColor: var(--navSocialColor);
-    --navTextColor: rgb(51, 51, 51);
-    --navHoverColor: var(--accentColor);
-    --navHoverOpacity: .6;
 
-    --cardShadowXSmall: 0 2px 5px -1px rgba(50,50,93,0.25),0 1px 3px -1px rgba(0,0,0,0.3);
-    --cardShadowSmall: 0 6px 12px -2px rgba(93, 66, 50, 0.25),0 3px 7px -3px rgba(0,0,0,0.3);
-    --cardShadowMedium: 0 13px 27px -5px rgba(50,50,93,0.25),0 8px 16px -8px rgba(0,0,0,0.3);
-    --cardShadowLarge: 0 30px 60px -12px rgba(50, 51, 93, 0.25),0 18px 36px -18px rgba(0, 0, 0, 0.3);
-    --cardShadowLargeInset: inset 0 30px 60px -12px rgba(50,50,93,0.25),inset 0 18px 36px -18px rgba(0,0,0,0.3);
-    --cardShadowXLarge: 0 50px 100px -20px rgba(50,50,93,0.25),0 30px 60px -30px rgba(0,0,0,0.3);
+    --backdrop: blur(20px);
+    --backdropBackgroundLighter: rgba(0, 0, 0, 0.178);
+    --backdropBackground: rgba(0, 0, 0, 0.815);
+    --backdropBackgroundDarker: rgb(0, 0, 0);
+    
+    --backdropBorderColor: rgba(59, 59, 59, 0.432);
+
+    --backdropBorderThin: 1px solid var(--backdropBorderColor);
+    --backdropBorderThick: 2px solid var(--backdropBorderColor);
 }
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
