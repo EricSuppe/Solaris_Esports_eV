@@ -13,7 +13,8 @@ class siteHeaderHandler extends App {
         this.siteHeaderSubMenuSection = document.querySelectorAll('[data-js-target="SiteSubMenuSection"]');
         this.siteHeaderSubMenuNewsItem = document.querySelectorAll('[data-js-target="SiteHeaderSubMenuNewsItem"]')
         this.siteHeaderSearchBar = document.querySelector('[data-js-target="SiteHeaderSearchBar"]')
-        this.siteHeaderSearchResultContainer = document.querySelector('[data-js-target="SiteHeaderSearchBar"]')
+        this.siteHeaderSearchBarContainer = document.querySelector('[data-js-target="SiteHeaderSearchBarContainer"]')
+        this.siteHeaderSearchResultContainer = document.querySelector('[data-js-target="SiteHeaderSearchResultContainer"]')
 
         this.initialMenuHeight = 100;
         this.initialMenuWidth = 100;
@@ -44,7 +45,7 @@ class siteHeaderHandler extends App {
                 this.siteHeaderSubNavItem[i].addEventListener("mouseenter", (e) => {this.sHSubNavGainFocus(e.target, i)})
             }
             this.siteHeaderMenu.addEventListener("mouseleave", () => {this.sHExit()})
-            this.siteHeaderSearchBar.addEventListener("focus", () => {this.sHSearchBarGainFocus()})
+            this.siteHeaderSearchBar.addEventListener("click", () => {this.sHSearchBarGainFocus()})
             this.siteHeaderSearchBar.addEventListener("blur", () => {this.sHSearchBarLoseFocus()})
             this.main.addEventListener("scroll", () => {this.getWindowScrollOffset();this.handleSiteHeaderOnScroll()})
         } catch (error) {
@@ -60,8 +61,8 @@ class siteHeaderHandler extends App {
             this.siteHeaderSubNavItem[i].removeEventListener("mouseenter", (e) => {this.sHSubNavGainFocus(e.target, i)})
         }
         this.siteHeaderMenu.removeEventListener("mouseleave", () => {this.sHExit()})
-        this.siteHeaderSearchBar.removeEventListener("focus", () => {this.sHSearchBarGainFocus()})
-        this.siteHeaderSearchBar.removeEventListener("blur", () => {this.sHSearchBarLoseFocus()})
+        this.siteHeaderSearchBarContainer.removeEventListener("focus", () => {this.sHSearchBarGainFocus()})
+        this.siteHeaderSearchBarContainer.removeEventListener("blur", () => {this.sHSearchBarLoseFocus()})
         this.main.removeEventListener("scroll", () => this.getWindowScrollOffset())
     }
     __reconnect() {
@@ -216,14 +217,14 @@ class siteHeaderHandler extends App {
         })
     }
     sHSearchBarGainFocus() {
-        this.siteHeaderSearchBar.style = "--siteHeaderSearchBarWidth: calc(var(--layoutWidth)/3)"
-        p(this.siteHeaderSearchBar, "aria-expanded", true)
+        this.siteHeaderSearchBarContainer.style = "--siteHeaderSearchBarWidth: calc(var(--layoutWidth)/3)"
+        p(this.siteHeaderSearchBarContainer, "aria-expanded", true)
         p(this.siteHeaderSearchResultContainer, "aria-hidden", false)
         p(this.siteHeaderSearchResultContainer, "hidden", null)
     }
     sHSearchBarLoseFocus() {
-        this.siteHeaderSearchBar.style = "--siteHeaderSearchBarWidth: calc(var(--layoutWidth)/5)"
-        p(this.siteHeaderSearchBar, "aria-expanded", false)
+        this.siteHeaderSearchBarContainer.style = "--siteHeaderSearchBarWidth: calc(var(--layoutWidth)/5)"
+        p(this.siteHeaderSearchBarContainer, "aria-expanded", false)
         p(this.siteHeaderSearchResultContainer, "aria-hidden", true)
         p(this.siteHeaderSearchResultContainer, "hidden", true)
     }

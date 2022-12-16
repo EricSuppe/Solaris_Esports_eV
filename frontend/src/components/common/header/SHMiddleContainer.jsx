@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import propTypes from "prop-types"
 import Logo from "../../../assets/svg/Logo.svg"
 import profile from "../../../assets/meliodas.jpg"
@@ -10,8 +10,13 @@ import "./style/sHSearchBar.css"
 import { Link } from 'react-router-dom'
 import SHMenuContainer from './SHMenuContainer'
 import "./style/sHNavContainer.css"
+import { useMemo } from 'react'
+import { gen } from '../../../scripts/gen'
 
 export default function SHMiddleContainer(props) {
+
+    /* initialize a new generator */
+    const generator = new gen()
 
     const isLoggedIn = false
     const isMember = false
@@ -54,35 +59,8 @@ export default function SHMiddleContainer(props) {
                 </ul>
                 </nav>
             </div>
-            <div 
-                className="SiteHeader__search" 
-                data-js-target="SiteHeaderSearchBar" 
-                aria-haspopup={true} 
-                aria-expanded={false}
-            >
-                <div className="SiteHeader__searchConatiner">
-                    <input 
-                        className='SiteHeader__searchBar' 
-                        type="text" 
-                        placeholder='suchen'
-                    />
-                    <button className='SiteHeader__searchButton'>
-                        <i className='bx bx-search-alt-2'></i>
-                    </button>
-                    <div 
-                        className="SiteHeader__searchResultContainer" 
-                        data-js-target="SiteHeaderSearchResultContainer"
-                        aria-hidden={true}
-                        hidden
-                    >
-                        <div className="SiteHeader__searchRecent">
-                            test
-                        </div>
-                        <div className="SiteHeader__searchCurrent"></div>
-                    </div>    
-                </div>
-                <SHMenuContainer {...props.siteHeaderConfig}/>
-            </div>
+            <SHMenuContainer {...props.siteHeaderConfig}/>
+            <SiteHeaderSearch generator={generator}/>
             <nav className={`SiteHeader__ctaAccount 
                 ${isLoggedIn ? "SiteHeader__ctaAccoun--loggedOut" : "SiteHeader__ctaAccoun--loggedIn"} 
                 ${(isMember && "SiteHeader__ctaAccoun--member") || ""}`}
@@ -110,4 +88,90 @@ export default function SHMiddleContainer(props) {
 }
 SHMiddleContainer.propTypes = {
     siteHeaderConfig: propTypes.object.isRequired,
+}
+
+const SiteHeaderSearch = (props) => {
+
+    const [items, setItems] = useState([
+        {icon: "", label: "Blog", description: "Esports Blog"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Stoeartebreaker", description: "Head of Esport und Autor"},
+        {icon: "", label: "Über uns", description: "Alles was man über den Solaris Esport eV wissen muss"},
+    ])
+    const [query, setQuery] = useState("")
+
+    const filteredItems = useMemo(() => {
+        if(query === "") return null
+        return Array.from(props.generator.filter(items, i => {
+            return i.label.toLowerCase().includes(query.toLowerCase()) || i.description.toLowerCase().includes(query.toLowerCase())
+        }, 6))
+    },[items, query])
+
+    function onChange(e) {
+        setQuery(e.target.value)
+    }
+
+    return (
+        <div 
+            className="SiteHeader__search" 
+            aria-haspopup={true} 
+            aria-expanded={false}
+            data-js-target="SiteHeaderSearchBarContainer" 
+        >
+            <div className="SiteHeader__searchConatiner">
+                <input 
+                    className='SiteHeader__searchBar' 
+                    type="search" 
+                    placeholder='suchen'
+                    data-js-target="SiteHeaderSearchBar"
+                    value={query}
+                    onChange={e => onChange(e)}
+                />
+                <button className='SiteHeader__searchButton'>
+                    <i className='bx bx-search-alt-2'></i>
+                </button>
+                <div 
+                    className="SiteHeader__searchResultContainer SearchBar--hideContent" 
+                    data-js-target="SiteHeaderSearchResultContainer"
+                    aria-hidden={true}
+                    hidden
+                >
+                    <div className="SiteHeader__searchRecent">
+                        {filteredItems !== null ? filteredItems.map((item, index) => {
+                            return <div 
+                                className="SearchResult" 
+                                key={`${index}`} 
+                                aria-label="search-result" 
+                                role={"navigation"}
+                            >
+                                <div className="SearchResult__iconContainer">
+                                    <img className='SearchResult__icon' src="" alt="" />
+                                </div>
+                                <div className="SearchResult__body">
+                                    <div className='SearchResult__labelContainer'>
+                                        <span className='SerachResult__label'>{item.label}</span>
+                                    </div>
+                                    <span className='SerachResult__description'>{item.description}</span>
+                                </div>              
+                            </div>
+                        }) : null}
+                    </div>
+                </div>    
+            </div>
+        </div>
+    )
+}
+SiteHeaderSearch.propTypes = {
+    generator: propTypes.object
 }
